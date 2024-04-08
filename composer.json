@@ -1,0 +1,17 @@
+{
+    "name": "uwipes/api_sistemas",
+    "description": "api para almacen de sistemas",
+    "require": {
+        "bramus/router": "^1.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "ApiSistemas\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "HectorPadilla"
+        }
+    ]
+}
