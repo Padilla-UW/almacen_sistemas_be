@@ -1,40 +1,31 @@
-[06-Apr-2024 12:55:50 America/Mexico_City] PHP Warning:  require_once(C:\AppServ\www\almacen_sistemas_be\src\config): failed to open stream: Permission denied in C:\AppServ\www\almacen_sistemas_be\index.php on line 12
-[06-Apr-2024 12:55:50 America/Mexico_City] PHP Fatal error:  require_once(): Failed opening required 'src/config' (include_path='.;C:\php\pear') in C:\AppServ\www\almacen_sistemas_be\index.php on line 12
-[06-Apr-2024 12:56:35 America/Mexico_City] PHP Warning:  require_once(C:\AppServ\www\almacen_sistemas_be\src\config): failed to open stream: Permission denied in C:\AppServ\www\almacen_sistemas_be\index.php on line 12
-[06-Apr-2024 12:56:35 America/Mexico_City] PHP Fatal error:  require_once(): Failed opening required 'src/config' (include_path='.;C:\php\pear') in C:\AppServ\www\almacen_sistemas_be\index.php on line 12
-[06-Apr-2024 12:56:35 America/Mexico_City] PHP Warning:  require_once(C:\AppServ\www\almacen_sistemas_be\src\config): failed to open stream: Permission denied in C:\AppServ\www\almacen_sistemas_be\index.php on line 12
-[06-Apr-2024 12:56:35 America/Mexico_City] PHP Fatal error:  require_once(): Failed opening required 'src/config' (include_path='.;C:\php\pear') in C:\AppServ\www\almacen_sistemas_be\index.php on line 12
-[06-Apr-2024 12:56:35 America/Mexico_City] PHP Warning:  require_once(C:\AppServ\www\almacen_sistemas_be\src\config): failed to open stream: Permission denied in C:\AppServ\www\almacen_sistemas_be\index.php on line 12
-[06-Apr-2024 12:56:35 America/Mexico_City] PHP Fatal error:  require_once(): Failed opening required 'src/config' (include_path='.;C:\php\pear') in C:\AppServ\www\almacen_sistemas_be\index.php on line 12
-[06-Apr-2024 12:56:36 America/Mexico_City] PHP Warning:  require_once(C:\AppServ\www\almacen_sistemas_be\src\config): failed to open stream: Permission denied in C:\AppServ\www\almacen_sistemas_be\index.php on line 12
-[06-Apr-2024 12:56:36 America/Mexico_City] PHP Fatal error:  require_once(): Failed opening required 'src/config' (include_path='.;C:\php\pear') in C:\AppServ\www\almacen_sistemas_be\index.php on line 12
-[06-Apr-2024 12:56:36 America/Mexico_City] PHP Warning:  require_once(C:\AppServ\www\almacen_sistemas_be\src\config): failed to open stream: Permission denied in C:\AppServ\www\almacen_sistemas_be\index.php on line 12
-[06-Apr-2024 12:56:36 America/Mexico_City] PHP Fatal error:  require_once(): Failed opening required 'src/config' (include_path='.;C:\php\pear') in C:\AppServ\www\almacen_sistemas_be\index.php on line 12
-[06-Apr-2024 12:56:36 America/Mexico_City] PHP Warning:  require_once(C:\AppServ\www\almacen_sistemas_be\src\config): failed to open stream: Permission denied in C:\AppServ\www\almacen_sistemas_be\index.php on line 12
-[06-Apr-2024 12:56:36 America/Mexico_City] PHP Fatal error:  require_once(): Failed opening required 'src/config' (include_path='.;C:\php\pear') in C:\AppServ\www\almacen_sistemas_be\index.php on line 12
-[06-Apr-2024 12:56:36 America/Mexico_City] PHP Warning:  require_once(C:\AppServ\www\almacen_sistemas_be\src\config): failed to open stream: Permission denied in C:\AppServ\www\almacen_sistemas_be\index.php on line 12
-[06-Apr-2024 12:56:36 America/Mexico_City] PHP Fatal error:  require_once(): Failed opening required 'src/config' (include_path='.;C:\php\pear') in C:\AppServ\www\almacen_sistemas_be\index.php on line 12
-[06-Apr-2024 12:57:36 America/Mexico_City] PHP Warning:  require_once(C:\AppServ\www\almacen_sistemas_be\src\config): failed to open stream: Permission denied in C:\AppServ\www\almacen_sistemas_be\index.php on line 12
-[06-Apr-2024 12:57:36 America/Mexico_City] PHP Fatal error:  require_once(): Failed opening required 'src/config' (include_path='.;C:\php\pear') in C:\AppServ\www\almacen_sistemas_be\index.php on line 12
-[06-Apr-2024 12:57:36 America/Mexico_City] PHP Warning:  require_once(C:\AppServ\www\almacen_sistemas_be\src\config): failed to open stream: Permission denied in C:\AppServ\www\almacen_sistemas_be\index.php on line 12
-[06-Apr-2024 12:57:36 America/Mexico_City] PHP Fatal error:  require_once(): Failed opening required 'src/config' (include_path='.;C:\php\pear') in C:\AppServ\www\almacen_sistemas_be\index.php on line 12
-[06-Apr-2024 12:57:54 America/Mexico_City] PHP Warning:  require_once(C:\AppServ\www\almacen_sistemas_be\src\config): failed to open stream: Permission denied in C:\AppServ\www\almacen_sistemas_be\index.php on line 12
-[06-Apr-2024 12:57:54 America/Mexico_City] PHP Fatal error:  require_once(): Failed opening required 'src/config' (include_path='.;C:\php\pear') in C:\AppServ\www\almacen_sistemas_be\index.php on line 12
-[06-Apr-2024 12:57:55 America/Mexico_City] PHP Warning:  require_once(C:\AppServ\www\almacen_sistemas_be\src\config): failed to open stream: Permission denied in C:\AppServ\www\almacen_sistemas_be\index.php on line 12
-[06-Apr-2024 12:57:55 America/Mexico_City] PHP Fatal error:  require_once(): Failed opening required 'src/config' (include_path='.;C:\php\pear') in C:\AppServ\www\almacen_sistemas_be\index.php on line 12
-[06-Apr-2024 12:57:55 America/Mexico_City] PHP Warning:  require_once(C:\AppServ\www\almacen_sistemas_be\src\config): failed to open stream: Permission denied in C:\AppServ\www\almacen_sistemas_be\index.php on line 12
-[06-Apr-2024 12:57:55 America/Mexico_City] PHP Fatal error:  require_once(): Failed opening required 'src/config' (include_path='.;C:\php\pear') in C:\AppServ\www\almacen_sistemas_be\index.php on line 12
-[06-Apr-2024 12:57:55 America/Mexico_City] PHP Warning:  require_once(C:\AppServ\www\almacen_sistemas_be\src\config): failed to open stream: Permission denied in C:\AppServ\www\almacen_sistemas_be\index.php on line 12
-[06-Apr-2024 12:57:55 America/Mexico_City] PHP Fatal error:  require_once(): Failed opening required 'src/config' (include_path='.;C:\php\pear') in C:\AppServ\www\almacen_sistemas_be\index.php on line 12
-[06-Apr-2024 12:57:55 America/Mexico_City] PHP Warning:  require_once(C:\AppServ\www\almacen_sistemas_be\src\config): failed to open stream: Permission denied in C:\AppServ\www\almacen_sistemas_be\index.php on line 12
-[06-Apr-2024 12:57:55 America/Mexico_City] PHP Fatal error:  require_once(): Failed opening required 'src/config' (include_path='.;C:\php\pear') in C:\AppServ\www\almacen_sistemas_be\index.php on line 12
-[06-Apr-2024 12:58:34 America/Mexico_City] PHP Warning:  require_once(C:\AppServ\www\almacen_sistemas_be\src\config): failed to open stream: Permission denied in C:\AppServ\www\almacen_sistemas_be\index.php on line 12
-[06-Apr-2024 12:58:34 America/Mexico_City] PHP Fatal error:  require_once(): Failed opening required 'src/config' (include_path='.;C:\php\pear') in C:\AppServ\www\almacen_sistemas_be\index.php on line 12
-[06-Apr-2024 12:58:49 America/Mexico_City] PHP Warning:  require_once(src/config.php): failed to open stream: No such file or directory in C:\AppServ\www\almacen_sistemas_be\index.php on line 12
-[06-Apr-2024 12:58:49 America/Mexico_City] PHP Fatal error:  require_once(): Failed opening required 'src/config.php' (include_path='.;C:\php\pear') in C:\AppServ\www\almacen_sistemas_be\index.php on line 12
-[06-Apr-2024 12:58:51 America/Mexico_City] PHP Warning:  require_once(src/config.php): failed to open stream: No such file or directory in C:\AppServ\www\almacen_sistemas_be\index.php on line 12
-[06-Apr-2024 12:58:51 America/Mexico_City] PHP Fatal error:  require_once(): Failed opening required 'src/config.php' (include_path='.;C:\php\pear') in C:\AppServ\www\almacen_sistemas_be\index.php on line 12
-[06-Apr-2024 12:58:51 America/Mexico_City] PHP Warning:  require_once(src/config.php): failed to open stream: No such file or directory in C:\AppServ\www\almacen_sistemas_be\index.php on line 12
-[06-Apr-2024 12:58:51 America/Mexico_City] PHP Fatal error:  require_once(): Failed opening required 'src/config.php' (include_path='.;C:\php\pear') in C:\AppServ\www\almacen_sistemas_be\index.php on line 12
-[06-Apr-2024 12:58:51 America/Mexico_City] PHP Warning:  require_once(src/config.php): failed to open stream: No such file or directory in C:\AppServ\www\almacen_sistemas_be\index.php on line 12
-[06-Apr-2024 12:58:51 America/Mexico_City] PHP Fatal error:  require_once(): Failed opening required 'src/config.php' (include_path='.;C:\php\pear') in C:\AppServ\www\almacen_sistemas_be\index.php on line 12
+[10-Apr-2024 11:18:07 America/Mexico_City] PHP Fatal error:  Uncaught Error: Cannot pass parameter 2 by reference in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php:77
+Stack trace:
+#0 C:\AppServ\www\almacen_sistemas_be\src\Controllers\Equipo.php(23): ApiSistemas\Models\EquipoModel::getEquipos('1', 0, 0, 0)
+#1 C:\AppServ\www\almacen_sistemas_be\src\Libs\Router.php(12): ApiSistemas\Controllers\Equipo->index()
+#2 [internal function]: {closure}()
+#3 C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php(458): call_user_func_array(Object(Closure), Array)
+#4 C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php(440): Bramus\Router\Router->invoke(Object(Closure), Array)
+#5 C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php(287): Bramus\Router\Router->handle(Array, true)
+#6 C:\AppServ\www\almacen_sistemas_be\src\Libs\Router.php(24): Bramus\Router\Router->run()
+#7 C:\AppServ\www\almacen_sistemas_be\index.php(13): require_once('C:\\AppServ\\www\\...')
+#8 {main}
+  thrown in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 77
+[10-Apr-2024 11:21:49 America/Mexico_City] EquipoModel::getEquipos -> SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+[10-Apr-2024 11:22:18 America/Mexico_City] EquipoModel::getEquipos -> SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+[10-Apr-2024 11:32:02 America/Mexico_City] PHP Notice:  Undefined variable: arrayParams in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 78
+[10-Apr-2024 11:32:02 America/Mexico_City] PHP Warning:  Invalid argument supplied for foreach() in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 78
+[10-Apr-2024 11:32:10 America/Mexico_City] PHP Notice:  Undefined variable: arrayParams in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 78
+[10-Apr-2024 11:32:10 America/Mexico_City] PHP Warning:  Invalid argument supplied for foreach() in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 78
+[10-Apr-2024 11:41:23 America/Mexico_City] EquipoModel::getEquipos -> SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+[10-Apr-2024 11:42:17 America/Mexico_City] PHP Notice:  Undefined variable: arrayParams in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 78
+[10-Apr-2024 11:42:17 America/Mexico_City] PHP Warning:  Invalid argument supplied for foreach() in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 78
+[10-Apr-2024 11:42:46 America/Mexico_City] PHP Notice:  Undefined variable: arrayParams in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 78
+[10-Apr-2024 11:42:46 America/Mexico_City] PHP Warning:  Invalid argument supplied for foreach() in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 78
+[10-Apr-2024 11:42:50 America/Mexico_City] PHP Notice:  Undefined variable: arrayParams in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 78
+[10-Apr-2024 11:42:50 America/Mexico_City] PHP Warning:  Invalid argument supplied for foreach() in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 78
+[10-Apr-2024 11:42:55 America/Mexico_City] PHP Notice:  Undefined variable: arrayParams in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 78
+[10-Apr-2024 11:42:55 America/Mexico_City] PHP Warning:  Invalid argument supplied for foreach() in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 78
+[10-Apr-2024 11:42:56 America/Mexico_City] PHP Notice:  Undefined variable: arrayParams in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 78
+[10-Apr-2024 11:42:56 America/Mexico_City] PHP Warning:  Invalid argument supplied for foreach() in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 78
+[10-Apr-2024 11:43:04 America/Mexico_City] PHP Notice:  Undefined variable: arrayParams in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 78
+[10-Apr-2024 11:43:04 America/Mexico_City] PHP Warning:  Invalid argument supplied for foreach() in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 78

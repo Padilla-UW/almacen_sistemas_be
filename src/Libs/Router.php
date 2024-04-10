@@ -1,18 +1,24 @@
 <?php
 
+use ApiSistemas\Controllers\Equipo;
+use ApiSistemas\Controllers\Inicio;
 use Bramus\Router\Router;
 
 $router = new Router();
 
-$router->set404(function () {
-    echo json_encode(["message" => "404 not found"]);
+
+$router->get('/equipos', function () {
+    $equipos = new Equipo();
+    $equipos->index();
 });
 
 $router->get('/', function () {
-    echo json_encode(["message" => "Hola mundo"]);
+    new Inicio();
 });
 
 
-
+$router->set404(function () {
+    echo json_encode(["message" => "404 not found"]);
+});
 
 $router->run();
