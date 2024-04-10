@@ -13,7 +13,6 @@ class Database
     private $password;
     private $charset;
 
-
     public function __construct()
     {
         $this->host = constant('HOST');

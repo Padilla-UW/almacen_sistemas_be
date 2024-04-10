@@ -74,11 +74,9 @@ class EquipoModel extends Model
             $sql .= $sqlFiltros;
             $query = $pdo->prepare($sql);
 
-
             foreach ($arrayParams as $key => $value) {
                 $query->bindParam($key, $value);
             }
-
 
             $query->execute();
             return $query->fetchAll(PDO::FETCH_ASSOC);

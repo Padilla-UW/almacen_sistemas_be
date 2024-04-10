@@ -6,7 +6,6 @@ use Bramus\Router\Router;
 
 $router = new Router();
 
-
 $router->get('/equipos', function () {
     $equipos = new Equipo();
     $equipos->index();
@@ -15,7 +14,6 @@ $router->get('/equipos', function () {
 $router->get('/', function () {
     new Inicio();
 });
-
 
 $router->set404(function () {
     echo json_encode(["message" => "404 not found"]);
