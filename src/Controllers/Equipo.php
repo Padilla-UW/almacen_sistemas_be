@@ -4,6 +4,7 @@ namespace ApiSistemas\Controllers;
 
 use ApiSistemas\Libs\Controller;
 use ApiSistemas\Models\EquipoModel;
+use CpuModel;
 
 class Equipo extends Controller
 {
@@ -22,5 +23,32 @@ class Equipo extends Controller
         $status = (isset($_GET['status']) && $_REQUEST['status'] != NULL) ? $_GET['status'] : '';
 
         $this->response(["equipos" => EquipoModel::getEquipos($numSerie, $idTipo, $idArea, $idPersona, $status)]);
+    }
+
+    public function create()
+    {
+        $equipo = new EquipoModel();
+        $equipo->idTipo = $this->data['idTipo'];
+        $equipo->idPersona = $this->data['idPersona'];
+        $equipo->idProveedor = $this->data['idProveedor'];
+        $equipo->marca = $this->data['marca'];
+        $equipo->modelo = $this->data['modelo'];
+        $equipo->numSerie = $this->data['numSerie'];
+        $equipo->fechaCompra = $this->data['fechaCompra'];
+        $equipo->numFactura = $this->data['numFactura'];
+        $equipo->observaciones = $this->data['observaciones'];
+        $equipo->status = 'activo';
+
+        $res = $equipo->save($this->data);
+        if (!$res['ok']) {
+            $this->response(array("ok" => false, "msj" => $res['msj']));
+        }
+
+        $this->response(array("ok" => true, "msj" => $res['msj']));
+    }
+
+    public function getTipos()
+    {
+        $this->response(["tipos" => EquipoModel::getTiposEquipo()]);
     }
 }
