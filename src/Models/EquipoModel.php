@@ -117,37 +117,9 @@ class EquipoModel extends Model
 
             if ($query->execute()) {
                 if ($this->idTipo == 1) {
-                    $cpu = new CpuModel();
-                    $cpu->idEquipo = $c->lastInsertId();
-                    $cpu->sistemaOperativo = ($data['sistemaOperativo']) ? $data['sistemaOperativo'] : null;
-                    $cpu->macAddress = ($data['macAddress']) ? $data['macAddress'] : '';
-                    $cpu->procesador = ($data['procesador']) ? $data['procesador'] : '';
-                    $cpu->tipo = ($data['tipoCpu']) ? $data['tipoCpu'] : null;
-                    $cpu->benchmark = ($data['benchmark']) ? $data['benchmark'] : '';
-                    $cpu->ligaBenchmark = ($data['ligaBenchmark']) ? $data['ligaBenchmark'] : '';
-                    $cpu->valuacion = ($data['valuacion']) ? $data['valuacion'] : '';
-                    $cpu->year = ($data['year']) ? $data['year'] : null;
-                    $cpu->ram = ($data['ram']) ? $data['ram'] : null;
-                    $cpu->expancionRam = ($data['expancionRam']) ? $data['expancionRam'] : null;
-                    $cpu->almacenamiento = ($data['almacenamiento']) ? $data['almacenamiento'] : null;
-                    $cpu->lugar = ($data['lugar']) ? $data['lugar'] : '';
-                    $cpu->certificado = ($data['certificado']) ? $data['certificado'] : null;
-                    $cpu->versionOffice = ($data['versionOffice']) ? $data['versionOffice'] : '';
-                    $cpu->tarjetaVideo = ($data['tarjetaVideo']) ? $data['tarjetaVideo'] : '';
-                    $cpu->tarjetaMadre = ($data['tarjetaMadre']) ? $data['tarjetaMadre'] : '';
-                    $cpu->otroSotfware = ($data['otroSotfware']) ? $data['otroSotfware'] : '';
-                    $cpu->precio = ($data['precio']) ? $data['precio'] : null;
-                    $cpu->valorDepreciado = ($data['valorDepreciado']) ? $data['valorDepreciado'] : null;
-                    $cpu->responsiva = ($data['responsiva']) ? $data['responsiva'] : '';
-                    $cpu->precioMercado = ($data['precioMercado']) ? $data['precioMercado'] : null;
-                    $cpu->fechaRenovacion = ($data['fechaRenovacion']) ? $data['fechaRenovacion'] : null;
-                    $cpu->numParte = ($data['numParte']) ? $data['numParte'] : '';
-
-                    if ($cpu->save($c)) {
-                        $c->commit();
+                    if ($this->saveCpu($data, $c)) {
                         return array("ok" => true, "msj" => "Cpu agregada");
                     } else {
-                        $c->rollBack();
                         return array("ok" => false, "msj" => "Error al agregar Cpu");
                     }
                 }
@@ -194,7 +166,44 @@ class EquipoModel extends Model
         }
     }
 
-    public static saveCpu(){
-        
+    public static function saveCpu($data, $c)
+    {
+        $cpu = new CpuModel();
+        $cpu->idEquipo = $c->lastInsertId();
+        $cpu->sistemaOperativo = ($data['sistemaOperativo']) ? $data['sistemaOperativo'] : null;
+        $cpu->macAddress = ($data['macAddress']) ? $data['macAddress'] : '';
+        $cpu->procesador = ($data['procesador']) ? $data['procesador'] : '';
+        $cpu->tipo = ($data['tipoCpu']) ? $data['tipoCpu'] : null;
+        $cpu->benchmark = ($data['benchmark']) ? $data['benchmark'] : '';
+        $cpu->ligaBenchmark = ($data['ligaBenchmark']) ? $data['ligaBenchmark'] : '';
+        $cpu->valuacion = ($data['valuacion']) ? $data['valuacion'] : '';
+        $cpu->year = ($data['year']) ? $data['year'] : null;
+        $cpu->ram = ($data['ram']) ? $data['ram'] : null;
+        $cpu->expancionRam = ($data['expancionRam']) ? $data['expancionRam'] : null;
+        $cpu->almacenamiento = ($data['almacenamiento']) ? $data['almacenamiento'] : null;
+        $cpu->lugar = ($data['lugar']) ? $data['lugar'] : '';
+        $cpu->certificado = ($data['certificado']) ? $data['certificado'] : null;
+        $cpu->versionOffice = ($data['versionOffice']) ? $data['versionOffice'] : '';
+        $cpu->tarjetaVideo = ($data['tarjetaVideo']) ? $data['tarjetaVideo'] : '';
+        $cpu->tarjetaMadre = ($data['tarjetaMadre']) ? $data['tarjetaMadre'] : '';
+        $cpu->otroSotfware = ($data['otroSotfware']) ? $data['otroSotfware'] : '';
+        $cpu->precio = ($data['precio']) ? $data['precio'] : null;
+        $cpu->valorDepreciado = ($data['valorDepreciado']) ? $data['valorDepreciado'] : null;
+        $cpu->responsiva = ($data['responsiva']) ? $data['responsiva'] : '';
+        $cpu->precioMercado = ($data['precioMercado']) ? $data['precioMercado'] : null;
+        $cpu->fechaRenovacion = ($data['fechaRenovacion']) ? $data['fechaRenovacion'] : null;
+        $cpu->numParte = ($data['numParte']) ? $data['numParte'] : '';
+
+        if ($cpu->save($c)) {
+            $c->commit();
+            return true;
+        } else {
+            $c->rollBack();
+            return false;
+        }
+    }
+
+    public static function saveMonitor($data, $c)
+    {
     }
 }
