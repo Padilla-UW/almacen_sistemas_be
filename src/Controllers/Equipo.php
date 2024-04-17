@@ -27,16 +27,17 @@ class Equipo extends Controller
 
     public function create()
     {
+
         $equipo = new EquipoModel();
-        $equipo->idTipo = $this->data['idTipo'];
-        $equipo->idPersona = $this->data['idPersona'];
-        $equipo->idProveedor = $this->data['idProveedor'];
-        $equipo->marca = $this->data['marca'];
-        $equipo->modelo = $this->data['modelo'];
-        $equipo->numSerie = $this->data['numSerie'];
-        $equipo->fechaCompra = $this->data['fechaCompra'];
-        $equipo->numFactura = $this->data['numFactura'];
-        $equipo->observaciones = $this->data['observaciones'];
+        $equipo->idTipo = ($this->data['idTipo']) ? $this->data['idTipo'] : null;
+        $equipo->idPersona = ($this->data['idPersona']) ? $this->data['idPersona'] : null;
+        $equipo->idProveedor = ($this->data['idProveedor']) ? $this->data['idProveedor'] : null;
+        $equipo->marca = ($this->data['marca']) ? $this->data['marca'] : '';
+        $equipo->modelo = ($this->data['modelo']) ? $this->data['modelo'] : '';
+        $equipo->numSerie = ($this->data['numSerie']) ? $this->data['numSerie'] : '';
+        $equipo->fechaCompra = ($this->data['fechaCompra']) ? $this->data['fechaCompra'] : '';
+        $equipo->numFactura = ($this->data['numFactura']) ? $this->data['numFactura'] : '';
+        $equipo->observaciones = ($this->data['observaciones']) ? $this->data['observaciones'] : '';
         $equipo->status = 'activo';
 
         $res = $equipo->save($this->data);
@@ -50,5 +51,11 @@ class Equipo extends Controller
     public function getTipos()
     {
         $this->response(["tipos" => EquipoModel::getTiposEquipo()]);
+    }
+
+    public function getDetalles()
+    {
+        $idEquipo = (isset($_GET['idEquipo']) && $_REQUEST['idEquipo'] != NULL) ? $_GET['idEquipo'] : '';
+        $this->response(["detalles" => EquipoModel::getDetallesEquipo($idEquipo)]);
     }
 }

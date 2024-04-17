@@ -32,6 +32,11 @@ $router->get('/personas/ubicaciones', function () {
     $persona->getUbicaciones();
 });
 
+$router->get('/personas/ubicaciones', function () {
+    $persona = new Persona();
+    $persona->getUbicaciones();
+});
+
 $router->post('/personas/create', function () {
     $persona = new Persona();
     $persona->create();
@@ -40,6 +45,11 @@ $router->post('/personas/create', function () {
 $router->post('/equipo/create', function () {
     $equipo = new Equipo();
     $equipo->create();
+});
+
+$router->get('/equipo/detalles', function () {
+    $equipo = new Equipo();
+    $equipo->getDetalles();
 });
 
 $router->get('/', function () {

@@ -72,7 +72,7 @@ class EquipoModel extends Model
             $sql = "SELECT e.idEquipo, e.numSerie, t.tipo, a.area, p.nombre,e.fechaCompra, e.status, e.modelo FROM equipo e 
             INNER JOIN tipo_equipo t ON e.idTipo = t.idTipo
             LEFT JOIN persona p ON p.idPersona = e.idPersona
-            INNER JOIN area_persona a ON p.idArea = a.idArea";
+            LEFT JOIN area_persona a ON p.idArea = a.idArea";
 
             $sql .= $sqlFiltros;
             $query = $pdo->prepare($sql);
@@ -119,43 +119,43 @@ class EquipoModel extends Model
                 if ($this->idTipo == 1) {
                     $cpu = new CpuModel();
                     $cpu->idEquipo = $c->lastInsertId();
-                    $cpu->idSO = $data['idSO'];
-                    $cpu->macAddress = $data['macAddress'];
-                    $cpu->procesador = $data['procesador'];
-                    $cpu->idTipo = $data['idTipoCpu'];
-                    $cpu->benchmark = $data['benchmark'];
-                    $cpu->ligaBenchmark = $data['ligaBenchmark'];
-                    $cpu->valuacion = $data['valuacion'];
-                    $cpu->year = $data['year'];
-                    $cpu->ram = $data['ram'];
-                    $cpu->expancionRam = $data['expancionRam'];
-                    $cpu->almacenamiento = $data['almacenamiento'];
-                    $cpu->lugar = $data['lugar'];
-                    $cpu->certificado = $data['certificado'];
-                    $cpu->versionOffice = $data['versionOffice'];
-                    $cpu->tarjetaVideo = $data['tarjetaVideo'];
-                    $cpu->tarjetaMadre = $data['tarjetaMadre'];
-                    $cpu->otroSotfware = $data['otroSotfware'];
-                    $cpu->precio = $data['precio'];
-                    $cpu->valorDepreciado = $data['valorDepreciado'];
-                    $cpu->responsiva = $data['responsiva'];
-                    $cpu->precioMercado = $data['precioMercado'];
-                    $cpu->fechaRenovacion = $data['fechaRenovacion'];
-                    $cpu->numParte = $data['numParte'];
+                    $cpu->sistemaOperativo = ($data['sistemaOperativo']) ? $data['sistemaOperativo'] : null;
+                    $cpu->macAddress = ($data['macAddress']) ? $data['macAddress'] : '';
+                    $cpu->procesador = ($data['procesador']) ? $data['procesador'] : '';
+                    $cpu->tipo = ($data['tipoCpu']) ? $data['tipoCpu'] : null;
+                    $cpu->benchmark = ($data['benchmark']) ? $data['benchmark'] : '';
+                    $cpu->ligaBenchmark = ($data['ligaBenchmark']) ? $data['ligaBenchmark'] : '';
+                    $cpu->valuacion = ($data['valuacion']) ? $data['valuacion'] : '';
+                    $cpu->year = ($data['year']) ? $data['year'] : null;
+                    $cpu->ram = ($data['ram']) ? $data['ram'] : null;
+                    $cpu->expancionRam = ($data['expancionRam']) ? $data['expancionRam'] : null;
+                    $cpu->almacenamiento = ($data['almacenamiento']) ? $data['almacenamiento'] : null;
+                    $cpu->lugar = ($data['lugar']) ? $data['lugar'] : '';
+                    $cpu->certificado = ($data['certificado']) ? $data['certificado'] : null;
+                    $cpu->versionOffice = ($data['versionOffice']) ? $data['versionOffice'] : '';
+                    $cpu->tarjetaVideo = ($data['tarjetaVideo']) ? $data['tarjetaVideo'] : '';
+                    $cpu->tarjetaMadre = ($data['tarjetaMadre']) ? $data['tarjetaMadre'] : '';
+                    $cpu->otroSotfware = ($data['otroSotfware']) ? $data['otroSotfware'] : '';
+                    $cpu->precio = ($data['precio']) ? $data['precio'] : null;
+                    $cpu->valorDepreciado = ($data['valorDepreciado']) ? $data['valorDepreciado'] : null;
+                    $cpu->responsiva = ($data['responsiva']) ? $data['responsiva'] : '';
+                    $cpu->precioMercado = ($data['precioMercado']) ? $data['precioMercado'] : null;
+                    $cpu->fechaRenovacion = ($data['fechaRenovacion']) ? $data['fechaRenovacion'] : null;
+                    $cpu->numParte = ($data['numParte']) ? $data['numParte'] : '';
 
                     if ($cpu->save($c)) {
                         $c->commit();
                         return array("ok" => true, "msj" => "Cpu agregada");
                     } else {
                         $c->rollBack();
-                        return array("ok" => false, "msj" => "Error al agrear Cpu");
+                        return array("ok" => false, "msj" => "Error al agregar Cpu");
                     }
                 }
             }
         } catch (PDOException $e) {
 
             error_log('EquipoModel::save()->' . $e->getMessage());
-            return array("ok" => false, "msj1" => $e->getMessage());
+            return array("ok" => false, "msj" => $e->getMessage());
         }
     }
 
@@ -169,5 +169,32 @@ class EquipoModel extends Model
             error_log('EquipoModel::getTipos -> ' . $e->getMessage());
             return array("error" => $e->getMessage());
         }
+    }
+
+    public static function getDetallesEquipo($idEquipo)
+    {
+        try {
+            $pdo = new Model();
+            $sql = "SELECT t.tabla FROM equipo e INNER JOIN tipo_equipo t ON e.idTipo = t.idTipo WHERE e.idEquipo = :id_equipo ";
+            $query = $pdo->prepare($sql);
+            $query->execute([":id_equipo" => $idEquipo]);
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+            if (count($result) == 0) {
+                return [];
+            }
+
+            $tabla = $result[0]["tabla"];
+            $sqlDetalle = "SELECT * FROM equipo e INNER JOIN $tabla ON e.idEquipo = $tabla.idEquipo WHERE e.idEquipo = :id_equipo";
+            $query = $pdo->prepare($sqlDetalle);
+            $query->execute([":id_equipo" => $idEquipo]);
+            return $query->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public static saveCpu(){
+        
     }
 }

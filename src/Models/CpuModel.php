@@ -10,8 +10,8 @@ class CpuModel extends Model
 {
     public $id;
     public $idEquipo;
-    public $idTipo;
-    public $idSO;
+    public $tipo;
+    public $sistemaOperativo;
     public $macAddress;
     public $procesador;
     public $benchmark;
@@ -42,10 +42,10 @@ class CpuModel extends Model
     public function save($c)
     {
         try {
-            $query = $c->prepare("INSERT INTO cpu (idEquipo, idTipo, idSO, macAddress, procesador, benchmark,ligaBenchmark, valuacion, year, ram, expancionRam, tarjetaMadre, almacenamiento, lugar, certificado,	versionOffice, tarjetaVideo, otroSotfware, precio, valorDepreciado, responsiva, precioMercado,fechaRenovacion, numParte) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            $query = $c->prepare("INSERT INTO cpu (idEquipo, tipo, sistemaOperativo, macAddress, procesador, benchmark,ligaBenchmark, valuacion, year, ram, expancionRam, tarjetaMadre, almacenamiento, lugar, certificado,	versionOffice, tarjetaVideo, otroSotfware, precio, valorDepreciado, responsiva, precioMercado,fechaRenovacion, numParte) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
             $query->bindValue(1, $this->idEquipo, PDO::PARAM_INT);
-            $query->bindValue(2, $this->idTipo, PDO::PARAM_INT);
-            $query->bindValue(3, $this->idSO, PDO::PARAM_INT);
+            $query->bindValue(2, $this->tipo, PDO::PARAM_STR);
+            $query->bindValue(3, $this->sistemaOperativo, PDO::PARAM_STR);
             $query->bindValue(4, $this->macAddress, PDO::PARAM_STR);
             $query->bindValue(5, $this->procesador, PDO::PARAM_STR);
             $query->bindValue(6, $this->benchmark, PDO::PARAM_STR);
