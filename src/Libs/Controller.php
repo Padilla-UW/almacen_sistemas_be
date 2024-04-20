@@ -21,7 +21,7 @@ class Controller
     {
 
         $missingParameters = $this->checkMissingParameters($parameters);
-        $emptyParameters = $this->checkEmptyParaneters();
+        $emptyParameters = $this->checkEmptyParaneters($parameters);
 
         if (!empty($missingParameters)) {
             $this->response(['error' => "Missing parameters: $missingParameters"]);
@@ -40,12 +40,12 @@ class Controller
         return implode(',', $missing);
     }
 
-    public function checkEmptyParaneters()
+    public function checkEmptyParaneters(array $parameters)
     {
         $emptyParams = [];
-        foreach ($this->data as $key => $param) {
+        foreach ($parameters as  $param) {
             if (empty($param)) {
-                $emptyParams[] = $key;
+                $emptyParams[] = $param;
             }
         }
 

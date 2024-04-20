@@ -9,19 +9,19 @@ use PDOException;
 
 class EquipoModel extends Model
 {
-    public $id;
-    public $idTipo;
-    public $tipo;
-    public $idPersona;
-    public $idProveedor;
-    public $marca;
-    public $modelo;
-    public $numSerie;
-    public $status;
-    public $fechaCompra;
-    public $numFactura;
-    public $observaciones;
-    public $firma;
+    protected $id;
+    protected $idTipo;
+    protected $tipo;
+    protected $idPersona;
+    protected $idProveedor;
+    protected $marca;
+    protected $modelo;
+    protected $numSerie;
+    protected $status;
+    protected $fechaCompra;
+    protected $numFactura;
+    protected $observaciones;
+    protected $firma;
 
     public function __construct()
     {
@@ -69,7 +69,7 @@ class EquipoModel extends Model
                 }
             }
 
-            $sql = "SELECT e.idEquipo, e.numSerie, t.tipo, a.area, p.nombre,e.fechaCompra, e.status, e.modelo FROM equipo e 
+            $sql = "SELECT e.idEquipo, e.numSerie, t.tipo, a.area, p.idPersona, CONCAT(p.nombre, ' ', p.apellidos) AS nombre,e.fechaCompra, e.status, e.modelo FROM equipo e 
             INNER JOIN tipo_equipo t ON e.idTipo = t.idTipo
             LEFT JOIN persona p ON p.idPersona = e.idPersona
             LEFT JOIN area_persona a ON p.idArea = a.idArea";
@@ -116,12 +116,21 @@ class EquipoModel extends Model
             $query->bindValue(10, $this->observaciones, PDO::PARAM_STR);
 
             if ($query->execute()) {
-                if ($this->idTipo == 1) {
-                    if ($this->saveCpu($data, $c)) {
-                        return array("ok" => true, "msj" => "Cpu agregada");
-                    } else {
-                        return array("ok" => false, "msj" => "Error al agregar Cpu");
-                    }
+                switch ($this->idTipo) {
+                    case 1:
+                        if ($this->saveCpu($data, $c)) {
+                            return array("ok" => true, "msj" => "Cpu agregada");
+                        } else {
+                            return array("ok" => false, "msj" => "Error al agregar Cpu");
+                        }
+                        break;
+                    case 2:
+                        if ($this->saveMonitor($data, $c)) {
+                            return array("ok" => true, "msj" => "Monitor agregado");
+                        } else {
+                            return array("ok" => false, "msj" => "Error al agregar Monitor");
+                        }
+                        break;
                 }
             }
         } catch (PDOException $e) {
@@ -153,6 +162,7 @@ class EquipoModel extends Model
             $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
             if (count($result) == 0) {
+
                 return [];
             }
 
@@ -205,5 +215,215 @@ class EquipoModel extends Model
 
     public static function saveMonitor($data, $c)
     {
+        $monitor = new MonitorModel();
+        $monitor->idEquipo = $c->lastInsertId();
+        $monitor->pulgadas = $data['pulgadas'];
+        if ($monitor->save($c)) {
+            $c->commit();
+            return true;
+        } else {
+            $c->rollBack();
+            return false;
+        }
+    }
+
+    public function edit($data)
+    {
+        try {
+            $pdo = new Model();
+            $con = $pdo->connect();
+            $con->beginTransaction();
+
+            $query = $con->prepare("UPDATE equipo SET idTipo = :id_tipo, idPersona=:id_persona, idProveedor = :id_proveedor, marca=:marca, modelo=:modelo, numSerie = :num_serie, status=:status, fechaCompra =:fecha_compra,numFactura = :num_factura,observaciones=:observaciones WHERE idEquipo = :id_equipo");
+            $query->bindValue(':id_equipo', $this->id, PDO::PARAM_INT);
+            $query->bindValue(':id_tipo', $this->idTipo, PDO::PARAM_INT);
+            $query->bindValue(':id_persona', $this->idPersona, PDO::PARAM_INT);
+            $query->bindValue(':id_proveedor', $this->idProveedor, PDO::PARAM_INT);
+            $query->bindValue(':marca', $this->marca, PDO::PARAM_STR);
+            $query->bindValue(':modelo', $this->modelo, PDO::PARAM_STR);
+            $query->bindValue(':num_serie', $this->numSerie, PDO::PARAM_STR);
+            $query->bindValue(':status', $this->status, PDO::PARAM_STR);
+            $query->bindValue(':fecha_compra', $this->fechaCompra, PDO::PARAM_STR);
+            $query->bindValue(':num_factura', $this->numFactura, PDO::PARAM_STR);
+            $query->bindValue(':observaciones', $this->observaciones, PDO::PARAM_STR);
+            if ($query->execute()) {
+                switch ($this->idTipo) {
+                    case 1:
+                        if ($this->editCpu($data, $con)) {
+                            return array("ok" => true, "msj" => "Cpu editada");
+                        } else {
+                            return array("ok" => false, "msj" => "Error al editar Cpu");
+                        }
+                        break;
+                }
+            }
+        } catch (PDOException $e) {
+            error_log('EquipoModel::edit()->' . $e->getMessage());
+            return array("ok" => false, "msj" => $e->getMessage());
+        }
+    }
+
+    public static function editCpu($data, $c)
+    {
+        $cpu = new CpuModel();
+        // $cpu->id = $data['idCpu'];
+        $cpu->idEquipo = $data['idEquipo'];
+        $cpu->sistemaOperativo = (isset($data['sistemaOperativo'])) ? $data['sistemaOperativo'] : '';
+        $cpu->macAddress = (isset($data['macAddress'])) ? $data['macAddress'] : '';
+        $cpu->procesador = (isset($data['procesador'])) ? $data['procesador'] : '';
+        $cpu->tipo = (isset($data['tipoCpu'])) ? $data['tipoCpu'] : null;
+        $cpu->benchmark = (isset($data['benchmark'])) ? $data['benchmark'] : '';
+        $cpu->ligaBenchmark = (isset($data['ligaBenchmark'])) ? $data['ligaBenchmark'] : '';
+        $cpu->valuacion = (isset($data['valuacion'])) ? $data['valuacion'] : '';
+        $cpu->year = (isset($data['year'])) ? $data['year'] : null;
+        $cpu->ram = (isset($data['ram'])) ? $data['ram'] : null;
+        $cpu->expancionRam = (isset($data['expancionRam'])) ? $data['expancionRam'] : null;
+        $cpu->almacenamiento = (isset($data['almacenamiento'])) ? $data['almacenamiento'] : null;
+        $cpu->lugar = (isset($data['lugar'])) ? $data['lugar'] : '';
+        $cpu->certificado = (isset($data['certificado'])) ? $data['certificado'] : null;
+        $cpu->versionOffice = (isset($data['versionOffice'])) ? $data['versionOffice'] : '';
+        $cpu->tarjetaVideo = (isset($data['tarjetaVideo'])) ? $data['tarjetaVideo'] : '';
+        $cpu->tarjetaMadre = (isset($data['tarjetaMadre'])) ? $data['tarjetaMadre'] : '';
+        $cpu->otroSotfware = (isset($data['otroSotfware'])) ? $data['otroSotfware'] : '';
+        $cpu->precio = (isset($data['precio'])) ? $data['precio'] : null;
+        $cpu->valorDepreciado = (isset($data['valorDepreciado'])) ? $data['valorDepreciado'] : null;
+        $cpu->responsiva = (isset($data['responsiva'])) ? $data['responsiva'] : '';
+        $cpu->precioMercado = (isset($data['precioMercado'])) ? $data['precioMercado'] : null;
+        $cpu->fechaRenovacion = (isset($data['fechaRenovacion'])) ? $data['fechaRenovacion'] : null;
+        $cpu->numParte = (isset($data['numParte'])) ? $data['numParte'] : '';
+        echo "aqui " . $cpu->edit($c) . " -";
+        if ($cpu->edit($c)) {
+            $c->commit();
+            return true;
+        } else {
+            $c->rollBack();
+            return false;
+        }
+    }
+
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    public function getIdTipo()
+    {
+        return $this->idTipo;
+    }
+
+    public function setIdTipo($idTipo)
+    {
+        $this->idTipo = $idTipo;
+
+        return $this;
+    }
+
+    public function getIdPersona()
+    {
+        return $this->idPersona;
+    }
+
+    public function setIdPersona($idPersona)
+    {
+        $this->idPersona = $idPersona;
+    }
+
+    public function getFirma()
+    {
+        return $this->firma;
+    }
+
+    public function setFirma($firma)
+    {
+        $this->firma = $firma;
+    }
+
+    public function getObservaciones()
+    {
+        return $this->observaciones;
+    }
+
+    public function setObservaciones($observaciones)
+    {
+        $this->observaciones = $observaciones;
+    }
+
+    public function getIdProveedor()
+    {
+        return $this->idProveedor;
+    }
+
+    public function setIdProveedor($idProveedor)
+    {
+        $this->idProveedor = $idProveedor;
+    }
+
+    public function getMarca()
+    {
+        return $this->marca;
+    }
+
+    public function setMarca($marca)
+    {
+        $this->marca = $marca;
+    }
+
+    public function getModelo()
+    {
+        return $this->modelo;
+    }
+
+    public function setModelo($modelo)
+    {
+        $this->modelo = $modelo;
+    }
+
+
+    public function getNumSerie()
+    {
+        return $this->numSerie;
+    }
+
+    public function setNumSerie($numSerie)
+    {
+        $this->numSerie = $numSerie;
+    }
+
+
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
+
+    public function getFechaCompra()
+    {
+        return $this->fechaCompra;
+    }
+
+    public function setFechaCompra($fechaCompra)
+    {
+        $this->fechaCompra = $fechaCompra;
+    }
+
+    public function getNumFactura()
+    {
+        return $this->numFactura;
+    }
+
+    public function setNumFactura($numFactura)
+    {
+        $this->numFactura = $numFactura;
     }
 }

@@ -42,10 +42,10 @@ class Persona extends Controller
 
     public function getPersonas()
     {
-        $idPersona = (isset($_GET['idPersona'])) ? $_GET['idPersona'] : null;
-        $idArea = (isset($_GET['idArea'])) ? $_GET['idArea'] : null;
-        $idUbicacion = (isset($_GET['idUbicacion'])) ? $_GET['idUbicacion'] : null;
-        $idResponsable = (isset($_GET['idResponsable'])) ? $_GET['idResponsable'] : null;
+        $idPersona = (isset($_GET['idPersona']) && $_GET['idPersona'] != '') ? $_GET['idPersona'] : null;
+        $idArea = (isset($_GET['idArea']) && $_GET['idArea'] != '') ? $_GET['idArea'] : null;
+        $idUbicacion = (isset($_GET['idUbicacion']) && $_GET['idUbicacion'] != '') ? $_GET['idUbicacion'] : null;
+        $idResponsable = (isset($_GET['idResponsable']) && $_GET['idResponsable'] != '') ? $_GET['idResponsable'] : null;
         $nombre = (isset($_GET['nombre'])) ? $_GET['nombre'] : null;
         $status = (isset($_GET['status'])) ? $_GET['status'] : null;
 
