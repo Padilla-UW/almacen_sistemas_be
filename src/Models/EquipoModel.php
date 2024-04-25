@@ -131,6 +131,12 @@ class EquipoModel extends Model
                             return array("ok" => false, "msj" => "Error al agregar Monitor");
                         }
                         break;
+                    case 5:
+                        if($this->saveDisco($data, $c)) {
+                            return array("ok" => true, "msj" => "Disco externo agregado");
+                        } else {
+                            return array("ok" => false, "msj" => "Error al agregar Disco externo");
+                        }
                 }
             }
         } catch (PDOException $e) {
@@ -219,6 +225,20 @@ class EquipoModel extends Model
         $monitor->idEquipo = $c->lastInsertId();
         $monitor->pulgadas = $data['pulgadas'];
         if ($monitor->save($c)) {
+            $c->commit();
+            return true;
+        } else {
+            $c->rollBack();
+            return false;
+        }
+    }
+
+    public static function saveDisco($data, $c)
+    {
+        $disco = new DiscoModel();
+        $disco->idEquipo = $c->lastInsertId();
+        $disco->capacidad = $data['capacidad'];
+        if($disco->save($c)){
             $c->commit();
             return true;
         } else {
