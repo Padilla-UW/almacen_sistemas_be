@@ -68,8 +68,9 @@ class PersonaModel extends Model
                 }
             }
 
-            $sql = "SELECT p.idPersona, p.idArea, p.idUbicacion, p.idNivel, p.idResponsable, p.nombre, p.apellidos, CONCAT(res.nombre, ' ', res.apellidos) AS responsable, a.area, u.ubicacion, p.status FROM persona p INNER JOIN area_persona a ON p.idArea = a.idArea
-            INNER JOIN ubicacion_persona u ON p.idUbicacion = u.idUbicacion 
+            $sql = "SELECT p.idPersona, p.idArea, p.idUbicacion, p.idNivel, p.idResponsable, p.nombre, p.apellidos, CONCAT(res.nombre, ' ', res.apellidos) AS responsable, a.area, u.ubicacion, p.status, p.nivelNum, us.usuario FROM persona p INNER JOIN area_persona a ON p.idArea = a.idArea
+            INNER JOIN ubicacion_persona u ON p.idUbicacion = u.idUbicacion
+            LEFT JOIN usuario us ON p.idPersona  = us.idPersona 
             LEFT JOIN persona res ON p.idResponsable = res.idPersona";
 
             $sql .= $sqlFiltros;
