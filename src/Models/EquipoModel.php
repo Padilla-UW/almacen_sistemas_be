@@ -69,21 +69,10 @@ class EquipoModel extends Model
                 }
             }
 
-            $sql = "SELECT e.idEquipo, e.numSerie, t.tipo, a.area, p.idPersona, CONCAT(p.nombre, ' ', p.apellidos) AS nombre,e.fechaCompra, e.status, e.modelo, e.marca, e.numFactura, e.observaciones, e.idTipo, 
-            c.sistemaOperativo, c.certificado, c.versionOffice, c.otroSotfware, c.macAddress, c.procesador, c.benchmark, c.ligaBenchmark, c.ram, c.expancionRam, c.tarjetaMadre, c.almacenamiento, c.tarjetaVideo, c.numParte, c.valuacion, c.year, c.precio, c.valorDepreciado, c.responsiva, c.precioMercado, c.lugar, c.fechaRenovacion,
-            m.pulgadas, ce.numCelular, ce.fechaInicio, ce.fechaFin, ch.tipoChecada, ch.ip, d.capacidad, i.impresionesXMes, s.size
-            FROM equipo e 
+            $sql = "SELECT e.idEquipo, e.numSerie, t.tipo, a.area, p.idPersona, CONCAT(p.nombre, ' ', p.apellidos) AS nombre,e.fechaCompra, e.status, e.modelo FROM equipo e 
             INNER JOIN tipo_equipo t ON e.idTipo = t.idTipo
-            LEFT JOIN cpu c ON e.idEquipo = c.idEquipo
-            LEFT JOIN monitor m ON e.idEquipo = m.idEquipo
-            LEFT JOIN celular ce ON e.idEquipo = ce.idEquipo
-            LEFT JOIN checador ch ON e.idEquipo = ch.idEquipo
-            LEFT JOIN disco_externo d ON e.idEquipo = d.idEquipo
-            LEFT JOIN impresora i ON e.idEquipo = i.idEquipo
-            LEFT JOIN smart_tv s ON e.idEquipo = s.idEquipo
             LEFT JOIN persona p ON p.idPersona = e.idPersona
-            LEFT JOIN area_persona a ON p.idArea = a.idArea
-            ORDER BY 3,2";
+            LEFT JOIN area_persona a ON p.idArea = a.idArea";
 
             $sql .= $sqlFiltros;
             $query = $pdo->prepare($sql);
@@ -153,12 +142,6 @@ class EquipoModel extends Model
                             return array("ok" => true, "msj" => "Checador agregado");
                         } else {
                             return array("ok" => false, "msj" => "Error al agregar checador");
-                        }
-                    case 5:
-                        if($this->saveDisco($data, $c)) {
-                            return array("ok" => true, "msj" => "Disco externo agregado");
-                        } else {
-                            return array("ok" => false, "msj" => "Error al agregar Disco externo");
                         }
                 }
             }
@@ -281,15 +264,6 @@ class EquipoModel extends Model
         $cel->ip = $data['ip'];
 
         if ($cel->save($c)) {
-
-        }
-    }
-    public static function saveDisco($data, $c)
-    {
-        $disco = new DiscoModel();
-        $disco->idEquipo = $c->lastInsertId();
-        $disco->capacidad = $data['capacidad'];
-        if($disco->save($c)){
             $c->commit();
             return true;
         } else {
