@@ -3,7 +3,7 @@
 namespace ApiSistemas\Models;
 
 use ApiSistemas\Libs\Model;
-
+use ApiSistemas\Models\CelularModel;
 use PDO;
 use PDOException;
 
@@ -131,6 +131,18 @@ class EquipoModel extends Model
                             return array("ok" => false, "msj" => "Error al agregar Monitor");
                         }
                         break;
+                    case 3:
+                        if ($this->saveCelular($data, $c)) {
+                            return array("ok" => true, "msj" => "Celular agregado");
+                        } else {
+                            return array("ok" => false, "msj" => "Error al agregar celular");
+                        }
+                    case 4:
+                        if ($this->saveChecador($data, $c)) {
+                            return array("ok" => true, "msj" => "Checador agregado");
+                        } else {
+                            return array("ok" => false, "msj" => "Error al agregar checador");
+                        }
                 }
             }
         } catch (PDOException $e) {
@@ -213,12 +225,45 @@ class EquipoModel extends Model
         }
     }
 
+
     public static function saveMonitor($data, $c)
     {
         $monitor = new MonitorModel();
         $monitor->idEquipo = $c->lastInsertId();
         $monitor->pulgadas = $data['pulgadas'];
         if ($monitor->save($c)) {
+            $c->commit();
+            return true;
+        } else {
+            $c->rollBack();
+            return false;
+        }
+    }
+
+    public static function saveCelular($data, $c)
+    {
+        $cel = new CelularModel();
+        $cel->idEquipo = $c->lastInsertId();
+        $cel->numCelular = $data['numCelular'];
+        $cel->fechaInicio = $data['fechaInicio'];
+        $cel->fechaFin = $data['fechaFin'];
+        if ($cel->save($c)) {
+            $c->commit();
+            return true;
+        } else {
+            $c->rollBack();
+            return false;
+        }
+    }
+
+    public static function saveChecador($data, $c)
+    {
+        $cel = new ChecadorModel();
+        $cel->idEquipo = $c->lastInsertId();
+        $cel->tipoChecada = $data['tipoChecada'];
+        $cel->ip = $data['ip'];
+
+        if ($cel->save($c)) {
             $c->commit();
             return true;
         } else {
