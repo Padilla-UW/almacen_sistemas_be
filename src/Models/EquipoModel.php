@@ -4,6 +4,7 @@ namespace ApiSistemas\Models;
 
 use ApiSistemas\Libs\Model;
 use ApiSistemas\Models\CelularModel;
+use DiscoExternoModel;
 use PDO;
 use PDOException;
 
@@ -143,6 +144,12 @@ class EquipoModel extends Model
                         } else {
                             return array("ok" => false, "msj" => "Error al agregar checador");
                         }
+                    case 5:
+                        if ($this->saveDisco($data, $c)) {
+                            return array("ok" => true, "msj" => "Disco Externo agregado");
+                        } else {
+                            return array("ok" => false, "msj" => "Error al agregar disco Externo");
+                        }
                 }
             }
         } catch (PDOException $e) {
@@ -264,6 +271,20 @@ class EquipoModel extends Model
         $cel->ip = $data['ip'];
 
         if ($cel->save($c)) {
+            $c->commit();
+            return true;
+        } else {
+            $c->rollBack();
+            return false;
+        }
+    }
+
+    public static function saveDisco($data, $c)
+    {
+        $disco = new DiscoExternoModel();
+        $disco->idEquipo = $c->lastInsertId();
+        $disco->capacidad = $data['capacidad'];
+        if ($disco->save($c)) {
             $c->commit();
             return true;
         } else {
