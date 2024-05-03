@@ -157,6 +157,12 @@ class EquipoModel extends Model
                         } else {
                             return array("ok" => false, "msj" => "Error al agregar Impresora");
                         }
+                    case 7:
+                        if ($this->saveNoBrake($data, $c)) {
+                            return array("ok" => true, "msj" => "Nobrake agregado");
+                        } else {
+                            return array("ok" => false, "msj" => "Error al agregar Nobrake");
+                        }
                 }
             }
         } catch (PDOException $e) {
@@ -306,6 +312,20 @@ class EquipoModel extends Model
         $impresora->idEquipo = $c->lastInsertId();
         $impresora->impresionesXMes = $data['impresionesXMes'];
         if ($impresora->save($c)) {
+            $c->commit();
+            return true;
+        } else {
+            $c->rollBack();
+            return false;
+        }
+    }
+
+    public static function saveNoBrake($data, $c)
+    {
+        $noBrake = new NoBrakeModel();
+        $noBrake->idEquipo = $c->lastInsertId();
+
+        if ($noBrake->save($c)) {
             $c->commit();
             return true;
         } else {
