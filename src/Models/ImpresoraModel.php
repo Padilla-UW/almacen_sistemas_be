@@ -5,20 +5,21 @@ namespace ApiSistemas\Models;
 use PDO;
 use PDOException;
 
-class DiscoExternoModel
+class ImpresoraModel
 {
+    public $id;
     public $idEquipo;
-    public $capacidad;
+    public $impresionesXMes;
 
     public function save($c)
     {
         try {
-            $query = $c->prepare("INSERT INTO  disco_externo (idEquipo, capacidad) VALUES (?,?)");
+            $query = $c->prepare("INSERT INTO impresora (idEquipo, impresionesXMes) VALUES (?,?)");
             $query->bindValue(1, $this->idEquipo, PDO::PARAM_INT);
-            $query->bindValue(2, $this->capacidad, PDO::PARAM_INT);
+            $query->bindValue(2, $this->impresionesXMes, PDO::PARAM_INT);
             return $query->execute();
         } catch (PDOException $e) {
-            error_log('discoExterno::save()->' . $e->getMessage());
+            error_log('Impresora::save()->' . $e->getMessage());
             return false;
         }
     }
