@@ -2,7 +2,8 @@
     "name": "uwipes/api_sistemas",
     "description": "api para almacen de sistemas",
     "require": {
-        "bramus/router": "^1.6"
+        "bramus/router": "^1.6",
+        "mpdf/mpdf": "^8.2"
     },
     "autoload": {
         "psr-4": {

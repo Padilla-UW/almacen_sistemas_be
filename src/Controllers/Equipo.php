@@ -4,7 +4,7 @@ namespace ApiSistemas\Controllers;
 
 use ApiSistemas\Libs\Controller;
 use ApiSistemas\Models\EquipoModel;
-use CpuModel;
+
 
 class Equipo extends Controller
 {
@@ -76,5 +76,21 @@ class Equipo extends Controller
         $equipo->setStatus(($this->data['status']) ? $this->data['status'] : '');
 
         $this->response(array("ok" => true, "msj" => $equipo->edit($this->data)));
+    }
+
+    public function getQr()
+    {
+        $idEquipo = (isset($_GET['idEquipo']) && $_REQUEST['idEquipo'] != NULL) ? $_GET['idEquipo'] : '';
+        try {
+            $img = 'Qrs/' . $idEquipo . '.png';
+            if (!file_exists('Qrs/' . $idEquipo . '.png')) {
+                $url = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://developers.google.com/chart/infographics/docs/qr_codes?hl=es-419';
+                file_put_contents($img, file_get_contents($url));
+            }
+            $this->response(array("ok" => true, "qr" => $img));
+            return $img;
+        } catch (\Throwable $th) {
+            $this->response(array("ok" => false, "msj" => $th->getMessage()));
+        }
     }
 }

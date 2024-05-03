@@ -1,56 +1,13 @@
-[20-Apr-2024 13:43:01 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
-[22-Apr-2024 13:42:54 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
-[22-Apr-2024 13:42:54 America/Mexico_City] PHP Notice:  Undefined index: numCelular in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 247
-[22-Apr-2024 13:42:54 America/Mexico_City] celular::save()->SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'numCelular' cannot be null
-[22-Apr-2024 14:04:17 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
-[22-Apr-2024 14:04:17 America/Mexico_City] PHP Notice:  Undefined index: tipoChecada in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 263
-[22-Apr-2024 14:04:17 America/Mexico_City] checador::save()->SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'tipoChecada' cannot be null
-[22-Apr-2024 17:04:58 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
-[22-Apr-2024 17:04:58 America/Mexico_City] PHP Notice:  Undefined index: idProveedor in C:\AppServ\www\almacen_sistemas_be\src\Controllers\Equipo.php on line 34
-[22-Apr-2024 17:08:44 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
-[22-Apr-2024 17:08:55 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
-[22-Apr-2024 17:28:13 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
-[22-Apr-2024 17:28:19 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
-[22-Apr-2024 17:28:24 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
-[22-Apr-2024 17:28:30 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
-[22-Apr-2024 17:28:30 America/Mexico_City] PHP Notice:  Undefined index: numCelular in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 247
-[22-Apr-2024 17:28:30 America/Mexico_City] celular::save()->SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'numCelular' cannot be null
-[22-Apr-2024 17:29:16 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
-[22-Apr-2024 17:29:16 America/Mexico_City] PHP Notice:  Undefined index: numCelular in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 247
-[22-Apr-2024 17:29:16 America/Mexico_City] celular::save()->SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'numCelular' cannot be null
-[22-Apr-2024 17:30:11 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
-[22-Apr-2024 17:30:11 America/Mexico_City] PHP Notice:  Undefined index: numCelular in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 247
-[22-Apr-2024 17:30:11 America/Mexico_City] celular::save()->SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'numCelular' cannot be null
-[22-Apr-2024 17:31:41 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
-[22-Apr-2024 17:31:41 America/Mexico_City] PHP Notice:  Undefined index: numCelular in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 247
-[22-Apr-2024 17:31:41 America/Mexico_City] celular::save()->SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'numCelular' cannot be null
-[22-Apr-2024 17:32:03 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
-[22-Apr-2024 17:32:03 America/Mexico_City] PHP Notice:  Undefined index: numCelular in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 247
-[22-Apr-2024 17:32:03 America/Mexico_City] celular::save()->SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'numCelular' cannot be null
-[22-Apr-2024 17:32:03 America/Mexico_City] PHP Notice:  Undefined index: numCelular in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 247
-[22-Apr-2024 17:32:03 America/Mexico_City] celular::save()->SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'numCelular' cannot be null
-[22-Apr-2024 17:32:40 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
-[22-Apr-2024 17:41:48 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
-[22-Apr-2024 17:41:48 America/Mexico_City] PHP Notice:  Undefined index: tipoChecada in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 263
-[22-Apr-2024 17:41:48 America/Mexico_City] checador::save()->SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'tipoChecada' cannot be null
-[22-Apr-2024 17:43:18 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
-[22-Apr-2024 17:43:18 America/Mexico_City] PHP Notice:  Undefined index: tipoChecada in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 263
-[22-Apr-2024 17:43:18 America/Mexico_City] checador::save()->SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'tipoChecada' cannot be null
-[22-Apr-2024 17:44:03 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
-[22-Apr-2024 17:44:03 America/Mexico_City] PHP Notice:  Undefined index: tipoChecada in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 263
-[22-Apr-2024 17:44:03 America/Mexico_City] checador::save()->SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'tipoChecada' cannot be null
-[22-Apr-2024 17:44:55 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
-[22-Apr-2024 17:44:55 America/Mexico_City] PHP Notice:  Undefined index: tipoChecada in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 263
-[22-Apr-2024 17:44:55 America/Mexico_City] checador::save()->SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'tipoChecada' cannot be null
-[22-Apr-2024 17:45:07 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
-[22-Apr-2024 17:45:07 America/Mexico_City] PHP Notice:  Undefined index: tipoChecada in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 263
-[22-Apr-2024 17:45:07 America/Mexico_City] checador::save()->SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'tipoChecada' cannot be null
-[22-Apr-2024 17:46:13 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
-[22-Apr-2024 17:46:13 America/Mexico_City] PHP Notice:  Undefined index: tipoChecada in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 263
-[22-Apr-2024 17:46:13 America/Mexico_City] checador::save()->SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'tipoChecada' cannot be null
-[22-Apr-2024 17:46:24 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
-[22-Apr-2024 17:47:10 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
-[22-Apr-2024 17:47:10 America/Mexico_City] PHP Notice:  Undefined index: tipoChecada in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 263
-[22-Apr-2024 17:47:10 America/Mexico_City] checador::save()->SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'tipoChecada' cannot be null
-[22-Apr-2024 17:48:04 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
-[23-Apr-2024 10:43:19 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
+[03-May-2024 17:16:14 America/Mexico_City] PHP Warning:  file_put_contents(../Qrs/1.png): failed to open stream: No such file or directory in C:\AppServ\www\almacen_sistemas_be\src\Controllers\Equipo.php on line 87
+[03-May-2024 17:18:17 America/Mexico_City] PHP Warning:  file_put_contents(../Qrs/1.png): failed to open stream: No such file or directory in C:\AppServ\www\almacen_sistemas_be\src\Controllers\Equipo.php on line 92
+[03-May-2024 17:18:32 America/Mexico_City] PHP Warning:  file_put_contents(../Qrs/1.png): failed to open stream: No such file or directory in C:\AppServ\www\almacen_sistemas_be\src\Controllers\Equipo.php on line 92
+[03-May-2024 17:19:00 America/Mexico_City] PHP Warning:  file_put_contents(../Qrs/1.png): failed to open stream: No such file or directory in C:\AppServ\www\almacen_sistemas_be\src\Controllers\Equipo.php on line 92
+[03-May-2024 17:19:29 America/Mexico_City] PHP Warning:  file_put_contents(../Qrs/1.png): failed to open stream: No such file or directory in C:\AppServ\www\almacen_sistemas_be\src\Controllers\Equipo.php on line 92
+[03-May-2024 17:19:42 America/Mexico_City] PHP Warning:  file_put_contents(../Qrs/1.png): failed to open stream: No such file or directory in C:\AppServ\www\almacen_sistemas_be\src\Controllers\Equipo.php on line 92
+[03-May-2024 17:19:52 America/Mexico_City] PHP Warning:  file_put_contents(../Qrs/1.png): failed to open stream: No such file or directory in C:\AppServ\www\almacen_sistemas_be\src\Controllers\Equipo.php on line 92
+[03-May-2024 17:20:45 America/Mexico_City] PHP Warning:  file_put_contents(../Qrs/1.png): failed to open stream: No such file or directory in C:\AppServ\www\almacen_sistemas_be\src\Controllers\Equipo.php on line 92
+[03-May-2024 17:20:59 America/Mexico_City] PHP Warning:  file_put_contents(../Qrs/1.png): failed to open stream: No such file or directory in C:\AppServ\www\almacen_sistemas_be\src\Controllers\Equipo.php on line 92
+[03-May-2024 17:21:09 America/Mexico_City] PHP Warning:  file_put_contents(../Qrs/1.png): failed to open stream: No such file or directory in C:\AppServ\www\almacen_sistemas_be\src\Controllers\Equipo.php on line 92
+[03-May-2024 17:32:49 America/Mexico_City] PHP Warning:  array_keys() expects parameter 1 to be array, null given in C:\AppServ\www\almacen_sistemas_be\src\Libs\Controller.php on line 39
+[03-May-2024 17:32:49 America/Mexico_City] PHP Warning:  array_diff(): Expected parameter 2 to be an array, null given in C:\AppServ\www\almacen_sistemas_be\src\Libs\Controller.php on line 39
+[03-May-2024 17:32:49 America/Mexico_City] PHP Warning:  implode(): Invalid arguments passed in C:\AppServ\www\almacen_sistemas_be\src\Libs\Controller.php on line 40

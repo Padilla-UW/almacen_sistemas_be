@@ -57,6 +57,11 @@ $router->put('/equipo/edit', function () {
     $equipo->edit();
 });
 
+$router->get('/equipo/qr', function () {
+    $equipo = new Equipo();
+    $equipo->getQr();
+});
+
 $router->get('/', function () {
     new Inicio();
 });
