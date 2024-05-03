@@ -163,6 +163,24 @@ class EquipoModel extends Model
                         } else {
                             return array("ok" => false, "msj" => "Error al agregar Nobrake");
                         }
+                    case 8:
+                        if ($this->saveProyector($data, $c)) {
+                            return array("ok" => true, "msj" => "Proyector agregado");
+                        } else {
+                            return array("ok" => false, "msj" => "Error al agregar Proyector");
+                        }
+                    case 9:
+                        if ($this->saveSmartTv($data, $c)) {
+                            return array("ok" => true, "msj" => "Smart tv agregado");
+                        } else {
+                            return array("ok" => false, "msj" => "Error al agregar Smart tv ");
+                        }
+                    case 10:
+                        if ($this->saveTablet($data, $c)) {
+                            return array("ok" => true, "msj" => "Tablet agregado");
+                        } else {
+                            return array("ok" => false, "msj" => "Error al agregar Tablet ");
+                        }
                 }
             }
         } catch (PDOException $e) {
@@ -326,6 +344,48 @@ class EquipoModel extends Model
         $noBrake->idEquipo = $c->lastInsertId();
 
         if ($noBrake->save($c)) {
+            $c->commit();
+            return true;
+        } else {
+            $c->rollBack();
+            return false;
+        }
+    }
+
+    public static function saveProyector($data, $c)
+    {
+        $proyector = new ProyectorModel();
+        $proyector->idEquipo = $c->lastInsertId();
+
+        if ($proyector->save($c)) {
+            $c->commit();
+            return true;
+        } else {
+            $c->rollBack();
+            return false;
+        }
+    }
+
+    public static function saveSmartTv($data, $c)
+    {
+        $smart = new SmartTvModel();
+        $smart->idEquipo = $c->lastInsertId();
+        $smart->size = $data['size'];
+        if ($smart->save($c)) {
+            $c->commit();
+            return true;
+        } else {
+            $c->rollBack();
+            return false;
+        }
+    }
+
+    public static function saveTablet($data, $c)
+    {
+        $tablet = new TabletModel();
+        $tablet->idEquipo = $c->lastInsertId();
+
+        if ($tablet->save($c)) {
             $c->commit();
             return true;
         } else {
