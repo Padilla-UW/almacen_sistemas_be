@@ -106,4 +106,16 @@ class CpuModel
             return false;
         }
     }
+
+    public function delete($con)
+    {
+        try {
+            $query = $con->prepare("DELETE FROM cpu  WHERE idEquipo = ? ");
+            $query->bindValue(1, $this->idEquipo, PDO::PARAM_INT);
+            return $query->execute();
+        } catch (PDOException $e) {
+            error_log('Cpu::delete()->' . $e->getMessage());
+            return false;
+        }
+    }
 }

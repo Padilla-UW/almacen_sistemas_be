@@ -59,12 +59,14 @@ class TraspasoModel extends Model
     {
         try {
             $c = $this->connect();
-            $query = $c->prepare("SELECT t.idTraspaso, t.fecha, CONCAT(p.nombre, ' ', p.apellidos) AS origen,
-            CONCAT(p2.nombre, ' ', p2.apellidos) AS destino
+            $query = $c->prepare("SELECT t.idTraspaso, t.observaciones, t.fecha, CONCAT(p.nombre, ' ', p.apellidos) AS origen,
+            CONCAT(p2.nombre, ' ', p2.apellidos) AS destino, e.marca, e.modelo, e.numSerie, tp.tipo
                 FROM traspaso t 
+                INNER JOIN equipo e ON t.idEquipo =  e.idEquipo
+                INNER JOIN tipo_equipo tp ON e.idTipo = tp.idTipo
                 LEFT JOIN persona p ON p.idPersona =  t.idPersonaOrigen  
                 LEFT JOIN persona p2 ON p2.idPersona =  t.idPersonaDestino
-                WHERE idEquipo = ? ");
+                WHERE t.idEquipo = ? ");
             $query->bindValue(1, $this->idEquipo, PDO::PARAM_INT);
             $query->execute();
             return $query->fetchAll(PDO::FETCH_ASSOC);

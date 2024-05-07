@@ -2,6 +2,7 @@
 
 namespace ApiSistemas\Models;
 
+use ApiSistemas\Controllers\Cpu;
 use ApiSistemas\Libs\Model;
 use ApiSistemas\Models\CelularModel;
 use ApiSistemas\Models\DiscoExternoModel;
@@ -89,10 +90,11 @@ class EquipoModel extends Model
 
     public function save($data)
     {
+        echo "Entra2";
         try {
             $c = $this->connect();
             $c->beginTransaction();
-
+            echo "Entra3";
             if ($this->numSerie == '') {
                 return array("ok" => false, "msj" => "Numero de serie vacio");
             }
@@ -404,6 +406,11 @@ class EquipoModel extends Model
             $con = $pdo->connect();
             $con->beginTransaction();
 
+            $queryTipo = $con->prepare("SELECT * FROM equipo WHERE idEquipo = :id_equipo");
+            $queryTipo->bindValue(':id_equipo', $this->id, PDO::PARAM_INT);
+            $queryTipo->execute();
+            $equipo = $queryTipo->fetch((PDO::FETCH_ASSOC));
+
             $query = $con->prepare("UPDATE equipo SET idTipo = :id_tipo, idPersona=:id_persona, idProveedor = :id_proveedor, marca=:marca, modelo=:modelo, numSerie = :num_serie, status=:status, fechaCompra =:fecha_compra,numFactura = :num_factura,observaciones=:observaciones WHERE idEquipo = :id_equipo");
             $query->bindValue(':id_equipo', $this->id, PDO::PARAM_INT);
             $query->bindValue(':id_tipo', $this->idTipo, PDO::PARAM_INT);
@@ -417,14 +424,29 @@ class EquipoModel extends Model
             $query->bindValue(':num_factura', $this->numFactura, PDO::PARAM_STR);
             $query->bindValue(':observaciones', $this->observaciones, PDO::PARAM_STR);
             if ($query->execute()) {
-                switch ($this->idTipo) {
-                    case 1:
-                        if ($this->editCpu($data, $con)) {
-                            return array("ok" => true, "msj" => "Cpu editada");
-                        } else {
-                            return array("ok" => false, "msj" => "Error al editar Cpu");
-                        }
-                        break;
+
+                if ($equipo['idTipo'] == $this->idTipo) {
+                    switch ($this->idTipo) {
+                        case 1:
+                            if ($this->editCpu($data, $con)) {
+                                return array("ok" => true, "msj" => "Cpu editada");
+                            } else {
+                                return array("ok" => false, "msj" => "Error al editar Cpu");
+                            }
+                            break;
+                        case 2:
+                            if ($this->editMonitor($data, $con)) {
+                                return array("ok" => true, "msj" => "Monitor editada");
+                            } else {
+                                return array("ok" => false, "msj" => "Error al editar Monitor");
+                            }
+                            break;
+                    }
+                } else {
+                    if ($this->deleteEquipo($data, $con, $equipo['idTipo'])) {
+                        echo "Entra";
+                        $this->save($data);
+                    }
                 }
             }
         } catch (PDOException $e) {
@@ -467,6 +489,43 @@ class EquipoModel extends Model
         } else {
             $c->rollBack();
             return false;
+        }
+    }
+
+    public static function editMonitor($data, $c)
+    {
+        $monitor = new MonitorModel();
+        $monitor->idEquipo = $data['idEquipo'];
+        $monitor->pulgadas = (isset($data['pulgadas'])) ? $data['pulgadas'] : '';
+
+        if ($monitor->edit($c)) {
+            $c->commit();
+            return true;
+        } else {
+            $c->rollBack();
+            return false;
+        }
+    }
+
+
+    public static function deleteEquipo($data, $c, $tipo)
+    {
+        switch ($tipo) {
+            case 1:
+                $cpu = new CpuModel();
+                $cpu->idEquipo = $data['idEquipo'];
+                if ($cpu->delete($c)) {
+                    $c->commit();
+                    return true;
+                } else {
+                    $c->rollBack();
+                    return false;
+                }
+                break;
+
+            default:
+
+                break;
         }
     }
 

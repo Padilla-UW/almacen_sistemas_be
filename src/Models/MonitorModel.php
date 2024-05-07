@@ -23,4 +23,17 @@ class MonitorModel
             return false;
         }
     }
+
+    public function edit($c)
+    {
+        try {
+            $query = $c->prepare("UPDATE monitor SET pulgadas = :pulgadas WHERE idEquipo = :id_equipo");
+            $query->bindValue(':pulgadas', $this->pulgadas, PDO::PARAM_STR);
+            $query->bindValue(':id_equipo', $this->idEquipo, PDO::PARAM_INT);
+            return $query->execute();
+        } catch (PDOException $e) {
+            error_log('Monitor::edit()->' . $e->getMessage());
+            return false;
+        }
+    }
 }
