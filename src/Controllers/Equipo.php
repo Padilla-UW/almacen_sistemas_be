@@ -75,7 +75,7 @@ class Equipo extends Controller
         $equipo->setObservaciones(($this->data['observaciones']) ? $this->data['observaciones'] : '');
         $equipo->setStatus(($this->data['status']) ? $this->data['status'] : '');
 
-        $this->response(array("ok" => true, "msj" => $equipo->edit($this->data)));
+        $this->response($equipo->edit($this->data));
     }
 
     public function getQr()

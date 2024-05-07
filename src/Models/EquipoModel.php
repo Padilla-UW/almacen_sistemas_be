@@ -217,7 +217,10 @@ class EquipoModel extends Model
             }
 
             $tabla = $result[0]["tabla"];
-            $sqlDetalle = "SELECT * FROM equipo e INNER JOIN $tabla ON e.idEquipo = $tabla.idEquipo WHERE e.idEquipo = :id_equipo";
+            $sqlDetalle = "SELECT * FROM equipo e 
+                INNER JOIN $tabla ON e.idEquipo = $tabla.idEquipo 
+                INNER JOIN tipo_equipo t ON e.idTipo = t.idTipo
+                WHERE e.idEquipo = :id_equipo";
             $query = $pdo->prepare($sqlDetalle);
             $query->execute([":id_equipo" => $idEquipo]);
             return $query->fetchAll(PDO::FETCH_ASSOC);
@@ -458,7 +461,6 @@ class EquipoModel extends Model
         $cpu->precioMercado = (isset($data['precioMercado'])) ? $data['precioMercado'] : null;
         $cpu->fechaRenovacion = (isset($data['fechaRenovacion'])) ? $data['fechaRenovacion'] : null;
         $cpu->numParte = (isset($data['numParte'])) ? $data['numParte'] : '';
-        echo "aqui " . $cpu->edit($c) . " -";
         if ($cpu->edit($c)) {
             $c->commit();
             return true;
