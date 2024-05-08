@@ -22,4 +22,16 @@ class DiscoExternoModel
             return false;
         }
     }
+
+    public function delete($con)
+    {
+        try {
+            $query = $con->prepare("DELETE FROM disco_externo  WHERE idEquipo = ? ");
+            $query->bindValue(1, $this->idEquipo, PDO::PARAM_INT);
+            return $query->execute();
+        } catch (PDOException $e) {
+            error_log('Disco externo::delete()->' . $e->getMessage());
+            return false;
+        }
+    }
 }

@@ -118,6 +118,7 @@ class EquipoModel extends Model
             $query->bindValue(9, $this->numFactura, PDO::PARAM_STR);
             $query->bindValue(10, $this->observaciones, PDO::PARAM_STR);
 
+            $this->setId($c->lastInsertId());
             if ($query->execute()) {
                 switch ($this->idTipo) {
                     case 1:
@@ -233,7 +234,7 @@ class EquipoModel extends Model
     public  function saveCpu($data, $c)
     {
         $cpu = new CpuModel();
-        $cpu->idEquipo = ($c->lastInsertId() != 0) ?  $c->lastInsertId() : $this->getId();
+        $cpu->idEquipo =  $this->getId();
         $cpu->sistemaOperativo = ($data['sistemaOperativo']) ? $data['sistemaOperativo'] : null;
         $cpu->macAddress = ($data['macAddress']) ? $data['macAddress'] : '';
         $cpu->procesador = ($data['procesador']) ? $data['procesador'] : '';
@@ -272,7 +273,7 @@ class EquipoModel extends Model
     {
         $monitor = new MonitorModel();
 
-        $monitor->idEquipo = ($c->lastInsertId() != 0) ?  $c->lastInsertId() : $this->getId();
+        $monitor->idEquipo = $this->getId();
         $monitor->pulgadas = $data['pulgadas'];
         if ($monitor->save($c)) {
             $c->commit();
@@ -286,7 +287,7 @@ class EquipoModel extends Model
     public  function saveCelular($data, $c)
     {
         $cel = new CelularModel();
-        $cel->idEquipo = $c->lastInsertId();
+        $cel->idEquipo = $this->getId();
         $cel->numCelular = $data['numCelular'];
         $cel->fechaInicio = $data['fechaInicio'];
         $cel->fechaFin = $data['fechaFin'];
@@ -302,7 +303,7 @@ class EquipoModel extends Model
     public  function saveChecador($data, $c)
     {
         $cel = new ChecadorModel();
-        $cel->idEquipo = $c->lastInsertId();
+        $cel->idEquipo = $this->getId();
         $cel->tipoChecada = $data['tipoChecada'];
         $cel->ip = $data['ip'];
 
@@ -318,7 +319,7 @@ class EquipoModel extends Model
     public function saveDisco($data, $c)
     {
         $disco = new DiscoExternoModel();
-        $disco->idEquipo = $c->lastInsertId();
+        $disco->idEquipo = $this->getId();
         $disco->capacidad = $data['capacidad'];
         if ($disco->save($c)) {
             $c->commit();
@@ -425,29 +426,11 @@ class EquipoModel extends Model
             $query->bindValue(':observaciones', $this->observaciones, PDO::PARAM_STR);
             if ($query->execute()) {
 
-                if ($equipo['idTipo'] == $this->idTipo) {
-                    switch ($this->idTipo) {
-                        case 1:
-                            if ($this->editCpu($data, $con)) {
-                                return array("ok" => true, "msj" => "Cpu editada");
-                            } else {
-                                return array("ok" => false, "msj" => "Error al editar Cpu");
-                            }
-                            break;
-                        case 2:
-                            if ($this->editMonitor($data, $con)) {
-                                return array("ok" => true, "msj" => "Monitor editada");
-                            } else {
-                                return array("ok" => false, "msj" => "Error al editar Monitor");
-                            }
-                            break;
-                    }
+
+                if ($this->deleteEquipo($data, $con, $equipo['idTipo'])) {
+                    return $this->saveXTipo($data, $con);
                 } else {
-                    if ($this->deleteEquipo($data, $con, $equipo['idTipo'])) {
-                        return $this->saveXTipo($data, $con);
-                    } else {
-                        return [];
-                    }
+                    return [];
                 }
             }
         } catch (PDOException $e) {
@@ -589,12 +572,21 @@ class EquipoModel extends Model
                 $monitor->idEquipo = $data['idEquipo'];
                 return $monitor->delete($c);
                 break;
+            case 3:
+                $cel = new CelularModel();
+                $cel->idEquipo = $data['idEquipo'];
+                return $cel->delete($c);
+                break;
+            case 4:
+                $checador = new ChecadorModel();
+                $checador->idEquipo = $data['idEquipo'];
+                return $checador->delete($c);
+                break;
             default:
 
                 break;
         }
     }
-
 
     public function getId()
     {
