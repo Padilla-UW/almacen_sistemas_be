@@ -40,12 +40,7 @@ class Equipo extends Controller
         $equipo->setObservaciones(($this->data['observaciones']) ? $this->data['observaciones'] : '');
         $equipo->setStatus('activo');
 
-        $res = $equipo->save($this->data);
-        if (!$res['ok']) {
-            $this->response(array("ok" => false, "msj" => $res['msj']));
-        }
-
-        $this->response(array("ok" => true, "msj" => $res['msj']));
+        $this->response($equipo->save($this->data));
     }
 
     public function getTipos()

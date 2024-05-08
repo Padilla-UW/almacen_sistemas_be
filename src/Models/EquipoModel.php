@@ -90,11 +90,10 @@ class EquipoModel extends Model
 
     public function save($data)
     {
-        echo "Entra2";
         try {
             $c = $this->connect();
             $c->beginTransaction();
-            echo "Entra3";
+
             if ($this->numSerie == '') {
                 return array("ok" => false, "msj" => "Numero de serie vacio");
             }
@@ -103,7 +102,7 @@ class EquipoModel extends Model
             $queryValidacion->bindValue(1, $this->numSerie, PDO::PARAM_STR);
             $queryValidacion->execute();
 
-            if ($queryValidacion->rowCount() > 0) {
+            if ($queryValidacion->rowCount() > 0 && $this->id != 0) {
                 return array("ok" => false, "msj" => "Numero de serie ya registrado");
             }
 
@@ -231,10 +230,10 @@ class EquipoModel extends Model
         }
     }
 
-    public static function saveCpu($data, $c)
+    public  function saveCpu($data, $c)
     {
         $cpu = new CpuModel();
-        $cpu->idEquipo = $c->lastInsertId();
+        $cpu->idEquipo = ($c->lastInsertId() != 0) ?  $c->lastInsertId() : $this->getId();
         $cpu->sistemaOperativo = ($data['sistemaOperativo']) ? $data['sistemaOperativo'] : null;
         $cpu->macAddress = ($data['macAddress']) ? $data['macAddress'] : '';
         $cpu->procesador = ($data['procesador']) ? $data['procesador'] : '';
@@ -269,10 +268,11 @@ class EquipoModel extends Model
     }
 
 
-    public static function saveMonitor($data, $c)
+    public function saveMonitor($data, $c)
     {
         $monitor = new MonitorModel();
-        $monitor->idEquipo = $c->lastInsertId();
+
+        $monitor->idEquipo = ($c->lastInsertId() != 0) ?  $c->lastInsertId() : $this->getId();
         $monitor->pulgadas = $data['pulgadas'];
         if ($monitor->save($c)) {
             $c->commit();
@@ -283,7 +283,7 @@ class EquipoModel extends Model
         }
     }
 
-    public static function saveCelular($data, $c)
+    public  function saveCelular($data, $c)
     {
         $cel = new CelularModel();
         $cel->idEquipo = $c->lastInsertId();
@@ -299,7 +299,7 @@ class EquipoModel extends Model
         }
     }
 
-    public static function saveChecador($data, $c)
+    public  function saveChecador($data, $c)
     {
         $cel = new ChecadorModel();
         $cel->idEquipo = $c->lastInsertId();
@@ -315,7 +315,7 @@ class EquipoModel extends Model
         }
     }
 
-    public static function saveDisco($data, $c)
+    public function saveDisco($data, $c)
     {
         $disco = new DiscoExternoModel();
         $disco->idEquipo = $c->lastInsertId();
@@ -329,7 +329,7 @@ class EquipoModel extends Model
         }
     }
 
-    public static function saveImpresora($data, $c)
+    public function saveImpresora($data, $c)
     {
         $impresora = new ImpresoraModel();
         $impresora->idEquipo = $c->lastInsertId();
@@ -343,7 +343,7 @@ class EquipoModel extends Model
         }
     }
 
-    public static function saveNoBrake($data, $c)
+    public function saveNoBrake($data, $c)
     {
         $noBrake = new NoBrakeModel();
         $noBrake->idEquipo = $c->lastInsertId();
@@ -357,7 +357,7 @@ class EquipoModel extends Model
         }
     }
 
-    public static function saveProyector($data, $c)
+    public function saveProyector($data, $c)
     {
         $proyector = new ProyectorModel();
         $proyector->idEquipo = $c->lastInsertId();
@@ -371,7 +371,7 @@ class EquipoModel extends Model
         }
     }
 
-    public static function saveSmartTv($data, $c)
+    public function saveSmartTv($data, $c)
     {
         $smart = new SmartTvModel();
         $smart->idEquipo = $c->lastInsertId();
@@ -385,7 +385,7 @@ class EquipoModel extends Model
         }
     }
 
-    public static function saveTablet($data, $c)
+    public function saveTablet($data, $c)
     {
         $tablet = new TabletModel();
         $tablet->idEquipo = $c->lastInsertId();
@@ -444,8 +444,9 @@ class EquipoModel extends Model
                     }
                 } else {
                     if ($this->deleteEquipo($data, $con, $equipo['idTipo'])) {
-                        echo "Entra";
-                        $this->save($data);
+                        return $this->saveXTipo($data, $con);
+                    } else {
+                        return [];
                     }
                 }
             }
@@ -455,7 +456,7 @@ class EquipoModel extends Model
         }
     }
 
-    public static function editCpu($data, $c)
+    public function editCpu($data, $c)
     {
         $cpu = new CpuModel();
         // $cpu->id = $data['idCpu'];
@@ -492,7 +493,7 @@ class EquipoModel extends Model
         }
     }
 
-    public static function editMonitor($data, $c)
+    public function editMonitor($data, $c)
     {
         $monitor = new MonitorModel();
         $monitor->idEquipo = $data['idEquipo'];
@@ -507,22 +508,87 @@ class EquipoModel extends Model
         }
     }
 
+    public function saveXTipo($data, $con)
+    {
+        switch ($this->idTipo) {
+            case 1:
+                if ($this->saveCpu($data, $con)) {
+                    return array("ok" => true, "msj" => "Cpu agregada");
+                } else {
+                    return array("ok" => false, "msj" => "Error al agregar Cpu");
+                }
+                break;
+            case 2:
+                if ($this->saveMonitor($data, $con)) {
+                    return array("ok" => true, "msj" => "Monitor agregado");
+                } else {
+                    return array("ok" => false, "msj" => "Error al agregar Monitor");
+                }
+                break;
+            case 3:
+                if ($this->saveCelular($data, $con)) {
+                    return array("ok" => true, "msj" => "Celular agregado");
+                } else {
+                    return array("ok" => false, "msj" => "Error al agregar celular");
+                }
+            case 4:
+                if ($this->saveChecador($data, $con)) {
+                    return array("ok" => true, "msj" => "Checador agregado");
+                } else {
+                    return array("ok" => false, "msj" => "Error al agregar checador");
+                }
+            case 5:
+                if ($this->saveDisco($data, $con)) {
+                    return array("ok" => true, "msj" => "Disco Externo agregado");
+                } else {
+                    return array("ok" => false, "msj" => "Error al agregar disco Externo");
+                }
+            case 6:
+                if ($this->saveImpresora($data, $con)) {
+                    return array("ok" => true, "msj" => "Impresora agregada");
+                } else {
+                    return array("ok" => false, "msj" => "Error al agregar Impresora");
+                }
+            case 7:
+                if ($this->saveNoBrake($data, $con)) {
+                    return array("ok" => true, "msj" => "Nobrake agregado");
+                } else {
+                    return array("ok" => false, "msj" => "Error al agregar Nobrake");
+                }
+            case 8:
+                if ($this->saveProyector($data, $con)) {
+                    return array("ok" => true, "msj" => "Proyector agregado");
+                } else {
+                    return array("ok" => false, "msj" => "Error al agregar Proyector");
+                }
+            case 9:
+                if ($this->saveSmartTv($data, $con)) {
+                    return array("ok" => true, "msj" => "Smart tv agregado");
+                } else {
+                    return array("ok" => false, "msj" => "Error al agregar Smart tv ");
+                }
+            case 10:
+                if ($this->saveTablet($data, $con)) {
+                    return array("ok" => true, "msj" => "Tablet agregado");
+                } else {
+                    return array("ok" => false, "msj" => "Error al agregar Tablet ");
+                }
+        }
+    }
 
-    public static function deleteEquipo($data, $c, $tipo)
+    public function deleteEquipo($data, $c, $tipo)
     {
         switch ($tipo) {
             case 1:
                 $cpu = new CpuModel();
                 $cpu->idEquipo = $data['idEquipo'];
-                if ($cpu->delete($c)) {
-                    $c->commit();
-                    return true;
-                } else {
-                    $c->rollBack();
-                    return false;
-                }
+                return $cpu->delete($c);
                 break;
-
+            case 2:
+                $monitor = new MonitorModel();
+                $monitor->idEquipo = $data['idEquipo'];
+                return $monitor->delete($c);
+                break;
             default:
 
                 break;

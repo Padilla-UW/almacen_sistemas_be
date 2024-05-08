@@ -1,9 +1,118 @@
-[07-May-2024 18:29:55 America/Mexico_City] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to ApiSistemas\Libs\Controller::response() must be of the type array, null given, called in C:\AppServ\www\almacen_sistemas_be\src\Controllers\Equipo.php on line 78 and defined in C:\AppServ\www\almacen_sistemas_be\src\Libs\Controller.php:13
-Stack trace:
-#0 C:\AppServ\www\almacen_sistemas_be\src\Controllers\Equipo.php(78): ApiSistemas\Libs\Controller->response(NULL)
-#1 C:\AppServ\www\almacen_sistemas_be\src\Libs\Router.php(58): ApiSistemas\Controllers\Equipo->edit()
-#2 [internal function]: {closure}()
-#3 C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php(458): call_user_func_array(Object(Closure), Array)
-#4 C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php(440): Bramus\Router\Router->invoke(Object(Closure), Array)
-#5 C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php(287): Bramus\Router\Router->handle(Array, true)
-#6 C:\AppServ\www\almacen_sistemas_be\src\Libs\Router.php in C:\AppServ\www\almacen_sistemas_be\src\Libs\Controller.php on line 13
+[08-May-2024 17:11:18 America/Mexico_City] PHP Notice:  Undefined index: sistemaOperativo in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 237
+[08-May-2024 17:11:18 America/Mexico_City] PHP Notice:  Undefined index: macAddress in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 238
+[08-May-2024 17:11:18 America/Mexico_City] PHP Notice:  Undefined index: procesador in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 239
+[08-May-2024 17:11:18 America/Mexico_City] PHP Notice:  Undefined index: tipoCpu in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 240
+[08-May-2024 17:11:18 America/Mexico_City] PHP Notice:  Undefined index: benchmark in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 241
+[08-May-2024 17:11:18 America/Mexico_City] PHP Notice:  Undefined index: ligaBenchmark in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 242
+[08-May-2024 17:11:18 America/Mexico_City] PHP Notice:  Undefined index: valuacion in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 243
+[08-May-2024 17:11:18 America/Mexico_City] PHP Notice:  Undefined index: year in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 244
+[08-May-2024 17:11:18 America/Mexico_City] PHP Notice:  Undefined index: ram in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 245
+[08-May-2024 17:11:18 America/Mexico_City] PHP Notice:  Undefined index: expancionRam in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 246
+[08-May-2024 17:11:18 America/Mexico_City] PHP Notice:  Undefined index: almacenamiento in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 247
+[08-May-2024 17:11:18 America/Mexico_City] PHP Notice:  Undefined index: lugar in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 248
+[08-May-2024 17:11:18 America/Mexico_City] PHP Notice:  Undefined index: certificado in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 249
+[08-May-2024 17:11:18 America/Mexico_City] PHP Notice:  Undefined index: versionOffice in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 250
+[08-May-2024 17:11:18 America/Mexico_City] PHP Notice:  Undefined index: tarjetaVideo in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 251
+[08-May-2024 17:11:18 America/Mexico_City] PHP Notice:  Undefined index: tarjetaMadre in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 252
+[08-May-2024 17:11:18 America/Mexico_City] PHP Notice:  Undefined index: otroSotfware in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 253
+[08-May-2024 17:11:18 America/Mexico_City] PHP Notice:  Undefined index: precio in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 254
+[08-May-2024 17:11:18 America/Mexico_City] PHP Notice:  Undefined index: valorDepreciado in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 255
+[08-May-2024 17:11:18 America/Mexico_City] PHP Notice:  Undefined index: responsiva in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 256
+[08-May-2024 17:11:18 America/Mexico_City] PHP Notice:  Undefined index: precioMercado in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 257
+[08-May-2024 17:11:18 America/Mexico_City] PHP Notice:  Undefined index: fechaRenovacion in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 258
+[08-May-2024 17:11:18 America/Mexico_City] PHP Notice:  Undefined index: numParte in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 259
+[08-May-2024 17:11:18 America/Mexico_City] Cpu::save()->SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_alm_sistemas`.`cpu`, CONSTRAINT `fk_cpu_equipo` FOREIGN KEY (`idEquipo`) REFERENCES `equipo` (`idEquipo`) ON DELETE RESTRICT ON UPDATE RESTRICT)
+[08-May-2024 17:13:57 America/Mexico_City] PHP Notice:  Undefined index: sistemaOperativo in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 237
+[08-May-2024 17:13:57 America/Mexico_City] PHP Notice:  Undefined index: macAddress in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 238
+[08-May-2024 17:13:57 America/Mexico_City] PHP Notice:  Undefined index: procesador in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 239
+[08-May-2024 17:13:57 America/Mexico_City] PHP Notice:  Undefined index: tipoCpu in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 240
+[08-May-2024 17:13:57 America/Mexico_City] PHP Notice:  Undefined index: benchmark in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 241
+[08-May-2024 17:13:57 America/Mexico_City] PHP Notice:  Undefined index: ligaBenchmark in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 242
+[08-May-2024 17:13:57 America/Mexico_City] PHP Notice:  Undefined index: valuacion in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 243
+[08-May-2024 17:13:57 America/Mexico_City] PHP Notice:  Undefined index: year in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 244
+[08-May-2024 17:13:57 America/Mexico_City] PHP Notice:  Undefined index: ram in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 245
+[08-May-2024 17:13:57 America/Mexico_City] PHP Notice:  Undefined index: expancionRam in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 246
+[08-May-2024 17:13:57 America/Mexico_City] PHP Notice:  Undefined index: almacenamiento in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 247
+[08-May-2024 17:13:57 America/Mexico_City] PHP Notice:  Undefined index: lugar in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 248
+[08-May-2024 17:13:57 America/Mexico_City] PHP Notice:  Undefined index: certificado in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 249
+[08-May-2024 17:13:57 America/Mexico_City] PHP Notice:  Undefined index: versionOffice in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 250
+[08-May-2024 17:13:57 America/Mexico_City] PHP Notice:  Undefined index: tarjetaVideo in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 251
+[08-May-2024 17:13:57 America/Mexico_City] PHP Notice:  Undefined index: tarjetaMadre in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 252
+[08-May-2024 17:13:57 America/Mexico_City] PHP Notice:  Undefined index: otroSotfware in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 253
+[08-May-2024 17:13:57 America/Mexico_City] PHP Notice:  Undefined index: precio in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 254
+[08-May-2024 17:13:57 America/Mexico_City] PHP Notice:  Undefined index: valorDepreciado in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 255
+[08-May-2024 17:13:57 America/Mexico_City] PHP Notice:  Undefined index: responsiva in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 256
+[08-May-2024 17:13:57 America/Mexico_City] PHP Notice:  Undefined index: precioMercado in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 257
+[08-May-2024 17:13:57 America/Mexico_City] PHP Notice:  Undefined index: fechaRenovacion in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 258
+[08-May-2024 17:13:57 America/Mexico_City] PHP Notice:  Undefined index: numParte in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 259
+[08-May-2024 17:13:57 America/Mexico_City] Cpu::save()->SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_alm_sistemas`.`cpu`, CONSTRAINT `fk_cpu_equipo` FOREIGN KEY (`idEquipo`) REFERENCES `equipo` (`idEquipo`) ON DELETE RESTRICT ON UPDATE RESTRICT)
+[08-May-2024 17:14:22 America/Mexico_City] PHP Notice:  Undefined index: sistemaOperativo in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 237
+[08-May-2024 17:14:22 America/Mexico_City] PHP Notice:  Undefined index: macAddress in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 238
+[08-May-2024 17:14:22 America/Mexico_City] PHP Notice:  Undefined index: procesador in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 239
+[08-May-2024 17:14:22 America/Mexico_City] PHP Notice:  Undefined index: tipoCpu in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 240
+[08-May-2024 17:14:22 America/Mexico_City] PHP Notice:  Undefined index: benchmark in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 241
+[08-May-2024 17:14:22 America/Mexico_City] PHP Notice:  Undefined index: ligaBenchmark in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 242
+[08-May-2024 17:14:22 America/Mexico_City] PHP Notice:  Undefined index: valuacion in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 243
+[08-May-2024 17:14:22 America/Mexico_City] PHP Notice:  Undefined index: year in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 244
+[08-May-2024 17:14:22 America/Mexico_City] PHP Notice:  Undefined index: ram in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 245
+[08-May-2024 17:14:22 America/Mexico_City] PHP Notice:  Undefined index: expancionRam in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 246
+[08-May-2024 17:14:22 America/Mexico_City] PHP Notice:  Undefined index: almacenamiento in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 247
+[08-May-2024 17:14:22 America/Mexico_City] PHP Notice:  Undefined index: lugar in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 248
+[08-May-2024 17:14:22 America/Mexico_City] PHP Notice:  Undefined index: certificado in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 249
+[08-May-2024 17:14:22 America/Mexico_City] PHP Notice:  Undefined index: versionOffice in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 250
+[08-May-2024 17:14:22 America/Mexico_City] PHP Notice:  Undefined index: tarjetaVideo in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 251
+[08-May-2024 17:14:22 America/Mexico_City] PHP Notice:  Undefined index: tarjetaMadre in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 252
+[08-May-2024 17:14:22 America/Mexico_City] PHP Notice:  Undefined index: otroSotfware in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 253
+[08-May-2024 17:14:22 America/Mexico_City] PHP Notice:  Undefined index: precio in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 254
+[08-May-2024 17:14:22 America/Mexico_City] PHP Notice:  Undefined index: valorDepreciado in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 255
+[08-May-2024 17:14:22 America/Mexico_City] PHP Notice:  Undefined index: responsiva in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 256
+[08-May-2024 17:14:22 America/Mexico_City] PHP Notice:  Undefined index: precioMercado in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 257
+[08-May-2024 17:14:22 America/Mexico_City] PHP Notice:  Undefined index: fechaRenovacion in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 258
+[08-May-2024 17:14:22 America/Mexico_City] PHP Notice:  Undefined index: numParte in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 259
+[08-May-2024 17:14:22 America/Mexico_City] Cpu::save()->SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_alm_sistemas`.`cpu`, CONSTRAINT `fk_cpu_equipo` FOREIGN KEY (`idEquipo`) REFERENCES `equipo` (`idEquipo`) ON DELETE RESTRICT ON UPDATE RESTRICT)
+[08-May-2024 17:15:44 America/Mexico_City] PHP Notice:  Undefined index: sistemaOperativo in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 237
+[08-May-2024 17:15:44 America/Mexico_City] PHP Notice:  Undefined index: macAddress in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 238
+[08-May-2024 17:15:44 America/Mexico_City] PHP Notice:  Undefined index: procesador in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 239
+[08-May-2024 17:15:44 America/Mexico_City] PHP Notice:  Undefined index: tipoCpu in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 240
+[08-May-2024 17:15:44 America/Mexico_City] PHP Notice:  Undefined index: benchmark in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 241
+[08-May-2024 17:15:44 America/Mexico_City] PHP Notice:  Undefined index: ligaBenchmark in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 242
+[08-May-2024 17:15:44 America/Mexico_City] PHP Notice:  Undefined index: valuacion in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 243
+[08-May-2024 17:15:44 America/Mexico_City] PHP Notice:  Undefined index: year in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 244
+[08-May-2024 17:15:44 America/Mexico_City] PHP Notice:  Undefined index: ram in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 245
+[08-May-2024 17:15:44 America/Mexico_City] PHP Notice:  Undefined index: expancionRam in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 246
+[08-May-2024 17:15:44 America/Mexico_City] PHP Notice:  Undefined index: almacenamiento in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 247
+[08-May-2024 17:15:44 America/Mexico_City] PHP Notice:  Undefined index: lugar in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 248
+[08-May-2024 17:15:44 America/Mexico_City] PHP Notice:  Undefined index: certificado in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 249
+[08-May-2024 17:15:44 America/Mexico_City] PHP Notice:  Undefined index: versionOffice in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 250
+[08-May-2024 17:15:44 America/Mexico_City] PHP Notice:  Undefined index: tarjetaVideo in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 251
+[08-May-2024 17:15:44 America/Mexico_City] PHP Notice:  Undefined index: tarjetaMadre in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 252
+[08-May-2024 17:15:44 America/Mexico_City] PHP Notice:  Undefined index: otroSotfware in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 253
+[08-May-2024 17:15:44 America/Mexico_City] PHP Notice:  Undefined index: precio in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 254
+[08-May-2024 17:15:44 America/Mexico_City] PHP Notice:  Undefined index: valorDepreciado in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 255
+[08-May-2024 17:15:44 America/Mexico_City] PHP Notice:  Undefined index: responsiva in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 256
+[08-May-2024 17:15:44 America/Mexico_City] PHP Notice:  Undefined index: precioMercado in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 257
+[08-May-2024 17:15:44 America/Mexico_City] PHP Notice:  Undefined index: fechaRenovacion in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 258
+[08-May-2024 17:15:44 America/Mexico_City] PHP Notice:  Undefined index: numParte in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 259
+[08-May-2024 17:17:13 America/Mexico_City] PHP Notice:  Undefined index: sistemaOperativo in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 237
+[08-May-2024 17:17:13 America/Mexico_City] PHP Notice:  Undefined index: macAddress in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 238
+[08-May-2024 17:17:13 America/Mexico_City] PHP Notice:  Undefined index: procesador in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 239
+[08-May-2024 17:17:13 America/Mexico_City] PHP Notice:  Undefined index: tipoCpu in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 240
+[08-May-2024 17:17:13 America/Mexico_City] PHP Notice:  Undefined index: benchmark in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 241
+[08-May-2024 17:17:13 America/Mexico_City] PHP Notice:  Undefined index: ligaBenchmark in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 242
+[08-May-2024 17:17:13 America/Mexico_City] PHP Notice:  Undefined index: valuacion in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 243
+[08-May-2024 17:17:13 America/Mexico_City] PHP Notice:  Undefined index: year in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 244
+[08-May-2024 17:17:13 America/Mexico_City] PHP Notice:  Undefined index: ram in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 245
+[08-May-2024 17:17:13 America/Mexico_City] PHP Notice:  Undefined index: expancionRam in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 246
+[08-May-2024 17:17:13 America/Mexico_City] PHP Notice:  Undefined index: almacenamiento in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 247
+[08-May-2024 17:17:13 America/Mexico_City] PHP Notice:  Undefined index: lugar in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 248
+[08-May-2024 17:17:13 America/Mexico_City] PHP Notice:  Undefined index: certificado in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 249
+[08-May-2024 17:17:13 America/Mexico_City] PHP Notice:  Undefined index: versionOffice in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 250
+[08-May-2024 17:17:13 America/Mexico_City] PHP Notice:  Undefined index: tarjetaVideo in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 251
+[08-May-2024 17:17:13 America/Mexico_City] PHP Notice:  Undefined index: tarjetaMadre in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 252
+[08-May-2024 17:17:13 America/Mexico_City] PHP Notice:  Undefined index: otroSotfware in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 253
+[08-May-2024 17:17:13 America/Mexico_City] PHP Notice:  Undefined index: precio in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 254
+[08-May-2024 17:17:13 America/Mexico_City] PHP Notice:  Undefined index: valorDepreciado in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 255
+[08-May-2024 17:17:13 America/Mexico_City] PHP Notice:  Undefined index: responsiva in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 256
+[08-May-2024 17:17:13 America/Mexico_City] PHP Notice:  Undefined index: precioMercado in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 257
+[08-May-2024 17:17:13 America/Mexico_City] PHP Notice:  Undefined index: fechaRenovacion in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 258
+[08-May-2024 17:17:13 America/Mexico_City] PHP Notice:  Undefined index: numParte in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 259
