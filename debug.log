@@ -1,3 +1,0 @@
-[08-May-2024 18:01:21 America/Mexico_City] PHP Notice:  Undefined index: capacidad in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 323
-[08-May-2024 18:01:21 America/Mexico_City] discoExterno::save()->SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`db_alm_sistemas`.`disco_externo`, CONSTRAINT `fk_disco_externo_equipo` FOREIGN KEY (`idEquipo`) REFERENCES `equipo` (`idEquipo`) ON DELETE RESTRICT ON UPDATE RESTRICT)
-[08-May-2024 18:02:15 America/Mexico_City] PHP Notice:  Undefined index: capacidad in C:\AppServ\www\almacen_sistemas_be\src\Models\EquipoModel.php on line 323

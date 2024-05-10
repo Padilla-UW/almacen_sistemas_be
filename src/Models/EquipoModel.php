@@ -333,7 +333,7 @@ class EquipoModel extends Model
     public function saveImpresora($data, $c)
     {
         $impresora = new ImpresoraModel();
-        $impresora->idEquipo = $c->lastInsertId();
+        $impresora->idEquipo = $this->getId();
         $impresora->impresionesXMes = $data['impresionesXMes'];
         if ($impresora->save($c)) {
             $c->commit();
@@ -347,7 +347,7 @@ class EquipoModel extends Model
     public function saveNoBrake($data, $c)
     {
         $noBrake = new NoBrakeModel();
-        $noBrake->idEquipo = $c->lastInsertId();
+        $noBrake->idEquipo = $this->getId();
 
         if ($noBrake->save($c)) {
             $c->commit();
@@ -361,7 +361,7 @@ class EquipoModel extends Model
     public function saveProyector($data, $c)
     {
         $proyector = new ProyectorModel();
-        $proyector->idEquipo = $c->lastInsertId();
+        $proyector->idEquipo = $this->getId();
 
         if ($proyector->save($c)) {
             $c->commit();
@@ -375,7 +375,7 @@ class EquipoModel extends Model
     public function saveSmartTv($data, $c)
     {
         $smart = new SmartTvModel();
-        $smart->idEquipo = $c->lastInsertId();
+        $smart->idEquipo = $this->getId();
         $smart->size = $data['size'];
         if ($smart->save($c)) {
             $c->commit();
@@ -389,7 +389,7 @@ class EquipoModel extends Model
     public function saveTablet($data, $c)
     {
         $tablet = new TabletModel();
-        $tablet->idEquipo = $c->lastInsertId();
+        $tablet->idEquipo = $this->getId();
 
         if ($tablet->save($c)) {
             $c->commit();
@@ -581,6 +581,16 @@ class EquipoModel extends Model
                 $checador = new ChecadorModel();
                 $checador->idEquipo = $data['idEquipo'];
                 return $checador->delete($c);
+                break;
+            case 5:
+                $disco = new DiscoExternoModel();
+                $disco->idEquipo = $data['idEquipo'];
+                return $disco->delete($c);
+                break;
+            case 6:
+                $impresora = new ImpresoraModel();
+                $impresora->idEquipo = $data['idEquipo'];
+                return $impresora->delete($c);
                 break;
             default:
 

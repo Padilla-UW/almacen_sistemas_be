@@ -3,6 +3,7 @@
 use ApiSistemas\Controllers\Equipo;
 use ApiSistemas\Controllers\Inicio;
 use ApiSistemas\Controllers\Persona;
+use ApiSistemas\Controllers\Proveedor;
 use ApiSistemas\Controllers\Traspaso;
 use Bramus\Router\Router;
 
@@ -75,6 +76,11 @@ $router->post('/traspaso/create', function () {
 $router->get('/traspaso', function () {
     $traspaso = new Traspaso();
     $traspaso->get();
+});
+
+$router->post('/proveedor/create', function () {
+    $proveedor = new Proveedor();
+    $proveedor->create();
 });
 
 $router->set404(function () {
