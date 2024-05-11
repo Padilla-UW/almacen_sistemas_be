@@ -83,6 +83,11 @@ $router->post('/proveedor/create', function () {
     $proveedor->create();
 });
 
+$router->get('/proveedor', function () {
+    $proveedor = new Proveedor();
+    $proveedor->get();
+});
+
 $router->set404(function () {
     echo json_encode(["message" => "404 not found"]);
 });

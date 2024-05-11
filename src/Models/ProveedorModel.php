@@ -14,6 +14,7 @@ class ProveedorModel extends Model
     protected $apellidos;
     protected $telefono;
     protected $razonSocial;
+    protected $status;
 
     public function __construct()
     {
@@ -40,39 +41,68 @@ class ProveedorModel extends Model
             $query->bindValue(':telefono', $this->telefono, PDO::PARAM_STR);
             $query->bindValue(':razonSocial', $this->razonSocial, PDO::PARAM_STR);
             if ($query->execute()) {
-                return array("ok" => true);
+                return array("ok" => true, "msj" => "Proveedor registrado");
             }
         } catch (PDOException $e) {
-            error_log('Disco externo::delete()->' . $e->getMessage());
-            return array("ok" => false, "message" => $e->getMessage());
+            error_log('Proveedor::create()->' . $e->getMessage());
+            return array("ok" => false, "msj" => $e->getMessage());
+        }
+    }
+
+    public function edit()
+    {
+        try {
+            $sql = "UPDATE proveedor SET nombre=:nombre, apellidos =:apellidos, telefono=:telefono, status=:status WHERE idProveedor = :id_proveedor";
+            $query = $this->prepare($sql);
+            $query->bindValue(':nombre', $this->nombre, PDO::PARAM_STR);
+            $query->bindValue(':apellidos', $this->apellidos, PDO::PARAM_STR);
+            $query->bindValue(':telefono', $this->telefono, PDO::PARAM_STR);
+            $query->bindValue(':status', $this->status, PDO::PARAM_STR);
+            $query->bindValue(':id_proveedor', $this->id, PDO::PARAM_INT);
+            $query->execute();
+            $query->fetch(PDO::FETCH_ASSOC);
+            return array("ok" => true, "proveedores" => $query->fetchAll(PDO::FETCH_ASSOC));
+        } catch (PDOException $e) {
+            error_log('Proveedores::get()->' . $e->getMessage());
+            return array("ok" => false, "msj" => $e->getMessage());
         }
     }
 
     public function get()
     {
-
         try {
-
-            $queryValidacion = $this->prepare("SELECT * FROM proveedor WHERE nombre = ? AND apellidos = ?");
-            $queryValidacion->bindValue(1, $this->nombre, PDO::PARAM_STR);
-            $queryValidacion->bindValue(2, $this->apellidos, PDO::PARAM_STR);
-            $queryValidacion->execute();
-
-            if ($queryValidacion->rowCount() > 0) {
-                return array("ok" => false, "msj" => "Proveedor ya registrado");
+            $arrayFilters = array();
+            $arrayParams = array();
+            if ($this->nombre != '' || $this->apellidos != '') {
+                $arrayFilters[] = " CONCAT(UPPER(p.nombre),' ', UPPER(p.apellidos)) LIKE UPPER(:nombre) ";
+                $arrayParams[':nombre'] = "%$this->nombre%";
             }
 
-            $query = $this->prepare("INSERT INTO proveedor (nombre, apellidos, telefono, razonSocial ) VALUES (:nombre,:apellidos,:telefono,:razonSocial)");
-            $query->bindValue(':nombre', $this->nombre, PDO::PARAM_STR);
-            $query->bindValue(':apellidos', $this->apellidos, PDO::PARAM_STR);
-            $query->bindValue(':telefono', $this->telefono, PDO::PARAM_STR);
-            $query->bindValue(':razonSocial', $this->razonSocial, PDO::PARAM_STR);
-            if ($query->execute()) {
-                return array("ok" => true);
+            if ($this->status != '') {
+                $arrayFilters[] = " p.status = :status ";
+                $arrayParams[':status'] = "$this->status";
             }
+
+            $sqlFiltros = "";
+            if ($arrayFilters != "") {
+                for ($i = 0; $i < count($arrayFilters); $i++) {
+                    if ($i == 0) {
+                        $sqlFiltros .= " WHERE " . $arrayFilters[$i];
+                    } else {
+                        $sqlFiltros .= " AND " . $arrayFilters[$i];
+                    }
+                }
+            }
+
+            $sql = "SELECT * FROM proveedor p ";
+            $sql .= $sqlFiltros;
+            $query = $this->prepare($sql);
+            $query->execute($arrayParams);
+            $query->fetch(PDO::FETCH_ASSOC);
+            return array("ok" => true, "proveedores" => $query->fetchAll(PDO::FETCH_ASSOC));
         } catch (PDOException $e) {
-            error_log('Disco externo::delete()->' . $e->getMessage());
-            return array("ok" => false, "message" => $e->getMessage());
+            error_log('Proveedores::get()->' . $e->getMessage());
+            return array("ok" => false, "msj" => $e->getMessage());
         }
     }
 
@@ -172,6 +202,26 @@ class ProveedorModel extends Model
     public function setRazonSocial($razonSocial)
     {
         $this->razonSocial = $razonSocial;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of status
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set the value of status
+     *
+     * @return  self
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
 
         return $this;
     }
