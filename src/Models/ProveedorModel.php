@@ -31,7 +31,7 @@ class ProveedorModel extends Model
             $queryValidacion->bindValue(2, $this->apellidos, PDO::PARAM_STR);
             $queryValidacion->execute();
 
-            if ($queryValidacion->rowCount() > 0) {
+            if ($this->validateProveedor() > 0) {
                 return array("ok" => false, "msj" => "Proveedor ya registrado");
             }
 
@@ -52,6 +52,13 @@ class ProveedorModel extends Model
     public function edit()
     {
         try {
+
+
+            if ($this->validateProveedor() > 0) {
+                return array("ok" => false, "msj" => "Proveedor ya registrado");
+            }
+
+
             $sql = "UPDATE proveedor SET nombre=:nombre, apellidos =:apellidos, telefono=:telefono, status=:status WHERE idProveedor = :id_proveedor";
             $query = $this->prepare($sql);
             $query->bindValue(':nombre', $this->nombre, PDO::PARAM_STR);
@@ -60,8 +67,7 @@ class ProveedorModel extends Model
             $query->bindValue(':status', $this->status, PDO::PARAM_STR);
             $query->bindValue(':id_proveedor', $this->id, PDO::PARAM_INT);
             $query->execute();
-            $query->fetch(PDO::FETCH_ASSOC);
-            return array("ok" => true, "proveedores" => $query->fetchAll(PDO::FETCH_ASSOC));
+            return array("ok" => true, "msj" => "Proveedor editado");
         } catch (PDOException $e) {
             error_log('Proveedores::get()->' . $e->getMessage());
             return array("ok" => false, "msj" => $e->getMessage());
@@ -83,6 +89,12 @@ class ProveedorModel extends Model
                 $arrayParams[':status'] = "$this->status";
             }
 
+
+            if ($this->id != '') {
+                $arrayFilters[] = " p.idProveedor = :id_proveedor ";
+                $arrayParams[':id_proveedor'] = intval($this->id);
+            }
+
             $sqlFiltros = "";
             if ($arrayFilters != "") {
                 for ($i = 0; $i < count($arrayFilters); $i++) {
@@ -98,12 +110,25 @@ class ProveedorModel extends Model
             $sql .= $sqlFiltros;
             $query = $this->prepare($sql);
             $query->execute($arrayParams);
-            $query->fetch(PDO::FETCH_ASSOC);
             return array("ok" => true, "proveedores" => $query->fetchAll(PDO::FETCH_ASSOC));
         } catch (PDOException $e) {
             error_log('Proveedores::get()->' . $e->getMessage());
             return array("ok" => false, "msj" => $e->getMessage());
         }
+    }
+
+    public function validateProveedor()
+    {
+        $sql = "SELECT * FROM proveedor WHERE nombre = ? AND apellidos = ?";
+        if (isset($this->id)) {
+            $sql .= " AND idProveedor != ?";
+        }
+        $queryValidacion = $this->prepare($sql);
+        $queryValidacion->bindValue(1, $this->nombre, PDO::PARAM_STR);
+        $queryValidacion->bindValue(2, $this->apellidos, PDO::PARAM_STR);
+        (isset($this->id)) && $queryValidacion->bindValue(3, $this->id, PDO::PARAM_INT);
+        $queryValidacion->execute();
+        return $queryValidacion->rowCount();
     }
 
     /**

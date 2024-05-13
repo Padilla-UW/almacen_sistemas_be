@@ -88,6 +88,11 @@ $router->get('/proveedor', function () {
     $proveedor->get();
 });
 
+$router->put('/proveedor/edit', function () {
+    $proveedor = new Proveedor();
+    $proveedor->edit();
+});
+
 $router->set404(function () {
     echo json_encode(["message" => "404 not found"]);
 });

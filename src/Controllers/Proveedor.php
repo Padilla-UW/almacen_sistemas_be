@@ -30,6 +30,7 @@ class Proveedor extends Controller
         (isset($_GET['apellidos'])) && $proveedor->setApellidos($_GET['apellidos']);
         (isset($_GET['telefono'])) && $proveedor->setTelefono($_GET['telefono']);
         (isset($_GET['status'])) && $proveedor->setStatus($_GET['status']);
+        (isset($_GET['idProveedor'])) && $proveedor->setId($_GET['idProveedor']);
 
         $this->response($proveedor->get());
     }

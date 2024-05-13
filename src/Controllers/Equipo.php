@@ -29,6 +29,7 @@ class Equipo extends Controller
     {
         $this->exists(['idTipo', 'numSerie']);
         $equipo = new EquipoModel();
+        echo var_dump($this->data);
         $equipo->setIdTipo(($this->data['idTipo']) ? $this->data['idTipo'] : null);
         $equipo->setIdPersona(($this->data['idPersona']) ? $this->data['idPersona'] : null);
         $equipo->setIdProveedor(($this->data['idProveedor']) ? $this->data['idProveedor'] : null);
