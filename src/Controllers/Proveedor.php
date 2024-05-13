@@ -45,6 +45,7 @@ class Proveedor extends Controller
         $proveedor->setApellidos($this->data['apellidos']);
         (isset($this->data['telefono'])) && $proveedor->setTelefono($this->data['telefono']);
         (isset($this->data['razonSocial'])) && $proveedor->setRazonSocial($this->data['razonSocial']);
+        (isset($this->data['status'])) && $proveedor->setStatus($this->data['status']);
 
         $this->response($proveedor->edit());
     }

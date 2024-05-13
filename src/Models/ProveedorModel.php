@@ -59,12 +59,13 @@ class ProveedorModel extends Model
             }
 
 
-            $sql = "UPDATE proveedor SET nombre=:nombre, apellidos =:apellidos, telefono=:telefono, status=:status WHERE idProveedor = :id_proveedor";
+            $sql = "UPDATE proveedor SET nombre=:nombre, apellidos =:apellidos, telefono=:telefono, razonSocial = :razon_social, status=:status WHERE idProveedor = :id_proveedor";
             $query = $this->prepare($sql);
             $query->bindValue(':nombre', $this->nombre, PDO::PARAM_STR);
             $query->bindValue(':apellidos', $this->apellidos, PDO::PARAM_STR);
             $query->bindValue(':telefono', $this->telefono, PDO::PARAM_STR);
             $query->bindValue(':status', $this->status, PDO::PARAM_STR);
+            $query->bindValue(':razon_social', $this->razonSocial, PDO::PARAM_STR);
             $query->bindValue(':id_proveedor', $this->id, PDO::PARAM_INT);
             $query->execute();
             return array("ok" => true, "msj" => "Proveedor editado");

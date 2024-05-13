@@ -29,7 +29,8 @@ class Equipo extends Controller
     {
         $this->exists(['idTipo', 'numSerie']);
         $equipo = new EquipoModel();
-        echo var_dump($this->data);
+        $this->data = $_POST;
+
         $equipo->setIdTipo(($this->data['idTipo']) ? $this->data['idTipo'] : null);
         $equipo->setIdPersona(($this->data['idPersona']) ? $this->data['idPersona'] : null);
         $equipo->setIdProveedor(($this->data['idProveedor']) ? $this->data['idProveedor'] : null);
@@ -40,6 +41,7 @@ class Equipo extends Controller
         $equipo->setNumFactura(($this->data['numFactura']) ? $this->data['numFactura'] : '');
         $equipo->setObservaciones(($this->data['observaciones']) ? $this->data['observaciones'] : '');
         $equipo->setStatus('activo');
+
 
         $this->response($equipo->save($this->data));
     }

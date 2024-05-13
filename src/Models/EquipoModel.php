@@ -102,7 +102,7 @@ class EquipoModel extends Model
             $queryValidacion->bindValue(1, $this->numSerie, PDO::PARAM_STR);
             $queryValidacion->execute();
 
-            if ($queryValidacion->rowCount() > 0 && $this->id != 0) {
+            if ($queryValidacion->rowCount() > 0) {
                 return array("ok" => false, "msj" => "Numero de serie ya registrado");
             }
 
@@ -118,8 +118,23 @@ class EquipoModel extends Model
             $query->bindValue(9, $this->numFactura, PDO::PARAM_STR);
             $query->bindValue(10, $this->observaciones, PDO::PARAM_STR);
 
-            $this->setId($c->lastInsertId());
             if ($query->execute()) {
+                $this->setId($c->lastInsertId());
+
+                $nombre = $_FILES['firma']['name'];
+                $nombre_tmp = $_FILES['firma']['tmp_name'];
+                $partes_nombre = explode('.', $nombre);
+                $extension = end($partes_nombre);
+                $ruta = "firmas/";
+
+                $rutaFinal = $ruta . $this->id . "." . $extension;
+                if (move_uploaded_file($nombre_tmp, $rutaFinal)) {
+                    $sentenciaUpdateImage = $c->prepare("UPDATE equipo SET firma = ? WHERE idEquipo = ?");
+                    $sentenciaUpdateImage->bindValue(1, $rutaFinal, PDO::PARAM_STR);
+                    $sentenciaUpdateImage->bindValue(2, $this->id, PDO::PARAM_INT);
+                    $sentenciaUpdateImage->execute();
+                }
+
                 switch ($this->idTipo) {
                     case 1:
                         if ($this->saveCpu($data, $c)) {
@@ -272,7 +287,6 @@ class EquipoModel extends Model
     public function saveMonitor($data, $c)
     {
         $monitor = new MonitorModel();
-
         $monitor->idEquipo = $this->getId();
         $monitor->pulgadas = $data['pulgadas'];
         if ($monitor->save($c)) {
