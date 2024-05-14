@@ -3,7 +3,8 @@
     "description": "api para almacen de sistemas",
     "require": {
         "bramus/router": "^1.6",
-        "mpdf/mpdf": "^8.2"
+        "mpdf/mpdf": "^8.2",
+        "phpoffice/phpspreadsheet": "^1.5"
     },
     "autoload": {
         "psr-4": {
