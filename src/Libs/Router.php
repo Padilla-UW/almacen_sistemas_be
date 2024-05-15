@@ -93,6 +93,11 @@ $router->put('/proveedor/edit', function () {
     $proveedor->edit();
 });
 
+$router->get('/equipo/excel', function () {
+    $equipo = new Equipo();
+    $equipo->getExcel();
+});
+
 $router->set404(function () {
     echo json_encode(["message" => "404 not found"]);
 });

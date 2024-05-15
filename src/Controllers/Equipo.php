@@ -4,7 +4,7 @@ namespace ApiSistemas\Controllers;
 
 use ApiSistemas\Libs\Controller;
 use ApiSistemas\Models\EquipoModel;
-
+use ApiSistemas\Models\ExcelModel;
 
 class Equipo extends Controller
 {
@@ -90,5 +90,12 @@ class Equipo extends Controller
         } catch (\Throwable $th) {
             $this->response(array("ok" => false, "msj" => $th->getMessage()));
         }
+    }
+
+
+    public function getExcel()
+    {
+        $excel = new ExcelModel();
+        $this->response(["url" => $excel->getExcel()]);
     }
 }
