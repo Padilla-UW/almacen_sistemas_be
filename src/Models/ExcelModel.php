@@ -80,27 +80,35 @@ class ExcelModel extends Model
     {
         switch ($this->idTipo) {
             case 1:
-                return ['UBICACIÓN', 'AREA', 'USUARIO', 'NIVEL', 'NIVEL NUM', 'RESPONSABLE', 'TIPO', 'MAC ADDRESS', 'MARCA DEL EQUIPO', 'MODELO', 'NO. DE PARTE', 'PROCESADOR', 'BENCHMARKING PROCESADOR', 'LIGA BENCH', 'VALUACION', 'AÑO', 'RAM ORIGINAL', 'expansion', 'RAM TOTAL', 'TARJETA MADRE', 'DISCO DURO', 'NO. SERIE', 'WINDOWS', 'LUGAR', 'CERTIFICADO', 'VERSION DE OFFICE', 'TARJETA DE VIDEO', 'OTRO SOFTWARE', 'USUARIO ANTERIOR ', 'FECHA DE TRASPASO', 'FECHA DE COMPRA', 'FECHA DE RENOVACION', 'PRECIO', 'VALOR DEPRECIADO', 'MERCADO', 'NO. FACT', 'PROVEEDOR', 'RESPONSIVA', 'ESTADO', 'FIRMA', 'FIRMA', 'OBSERVACIONES'];
+                return ['UBICACIÓN', 'AREA', 'USUARIO', 'NIVEL', 'NIVEL NUM', 'RESPONSABLE', 'TIPO', 'MAC ADDRESS', 'MARCA DEL EQUIPO', 'MODELO', 'NO. DE PARTE', 'PROCESADOR', 'BENCHMARKING PROCESADOR', 'LIGA BENCH', 'VALUACION', 'AÑO', 'RAM ORIGINAL', 'EXPANSION', 'RAM TOTAL', 'TARJETA MADRE', 'DISCO DURO', 'NO. SERIE', 'WINDOWS', 'LUGAR', 'CERTIFICADO', 'VERSION DE OFFICE', 'TARJETA DE VIDEO', 'OTRO SOFTWARE', 'USUARIO ANTERIOR ', 'FECHA DE TRASPASO', 'FECHA DE COMPRA', 'FECHA DE RENOVACION', 'PRECIO', 'VALOR DEPRECIADO', 'MERCADO', 'NO. FACT', 'PROVEEDOR', 'RESPONSIVA', 'ESTADO', 'FIRMA', 'FIRMA', 'OBSERVACIONES'];
                 break;
             case 2:
-                return [];
+                return ['UBICACIÓN', 'AREA', 'USUARIO', 'NIVEL', 'NIVEL NUM', 'RESPONSABLE','MARCA DEL EQUIPO', 'MODELO', 'NO. SERIE', 'USUARIO ANTERIOR ', 'FECHA DE TRASPASO', 'FECHA DE COMPRA', 'NO. FACT', 'PROVEEDOR', 'RESPONSIVA', 'ESTADO', 'FIRMA', 'FIRMA', 'OBSERVACIONES', 'PULGADAS'];
                 break;
             case 3:
-                return [];
+                return ['UBICACIÓN', 'AREA', 'USUARIO', 'NIVEL', 'NIVEL NUM', 'RESPONSABLE','MARCA DEL EQUIPO', 'MODELO', 'NO. SERIE', 'USUARIO ANTERIOR ', 'FECHA DE TRASPASO', 'FECHA DE COMPRA', 'NO. FACT', 'PROVEEDOR', 'RESPONSIVA', 'ESTADO', 'FIRMA', 'FIRMA', 'OBSERVACIONES', 'NUMERO DE CELULAR', 'FECHA DE INICIO', 'FECHA DE FIN'];
                 break;
             case 4:
-                return [];
+                return ['UBICACIÓN', 'AREA', 'USUARIO', 'NIVEL', 'NIVEL NUM', 'RESPONSABLE','MARCA DEL EQUIPO', 'MODELO', 'NO. SERIE', 'USUARIO ANTERIOR ', 'FECHA DE TRASPASO', 'FECHA DE COMPRA', 'NO. FACT', 'PROVEEDOR', 'RESPONSIVA', 'ESTADO', 'FIRMA', 'FIRMA', 'OBSERVACIONES', 'TIPO DE CHECADA', 'IP'];
                 break;
             case 5:
-                return [];
+                return ['UBICACIÓN', 'AREA', 'USUARIO', 'NIVEL', 'NIVEL NUM', 'RESPONSABLE','MARCA DEL EQUIPO', 'MODELO', 'NO. SERIE', 'USUARIO ANTERIOR ', 'FECHA DE TRASPASO', 'FECHA DE COMPRA', 'NO. FACT', 'PROVEEDOR', 'RESPONSIVA', 'ESTADO', 'FIRMA', 'FIRMA', 'OBSERVACIONES', 'CAPACIDAD'];
                 break;
             case 6:
-                return [];
+                return ['UBICACIÓN', 'AREA', 'USUARIO', 'NIVEL', 'NIVEL NUM', 'RESPONSABLE','MARCA DEL EQUIPO', 'MODELO', 'NO. SERIE', 'USUARIO ANTERIOR ', 'FECHA DE TRASPASO', 'FECHA DE COMPRA', 'NO. FACT', 'PROVEEDOR', 'RESPONSIVA', 'ESTADO', 'FIRMA', 'FIRMA', 'OBSERVACIONES', 'IMPRESIONES POR MES'];
                 break;
             case 7:
-                return [];
+                return ['UBICACIÓN', 'AREA', 'USUARIO', 'NIVEL', 'NIVEL NUM', 'RESPONSABLE','MARCA DEL EQUIPO', 'MODELO', 'NO. SERIE', 'USUARIO ANTERIOR ', 'FECHA DE TRASPASO', 'FECHA DE COMPRA', 'NO. FACT', 'PROVEEDOR', 'RESPONSIVA', 'ESTADO', 'FIRMA', 'FIRMA', 'OBSERVACIONES'];
                 break;
-
+            case 8:
+                return ['UBICACIÓN', 'AREA', 'USUARIO', 'NIVEL', 'NIVEL NUM', 'RESPONSABLE','MARCA DEL EQUIPO', 'MODELO', 'NO. SERIE', 'USUARIO ANTERIOR ', 'FECHA DE TRASPASO', 'FECHA DE COMPRA', 'NO. FACT', 'PROVEEDOR', 'RESPONSIVA', 'ESTADO', 'FIRMA', 'FIRMA', 'OBSERVACIONES'];
+                break;
+            case 9:
+                return ['UBICACIÓN', 'AREA', 'USUARIO', 'NIVEL', 'NIVEL NUM', 'RESPONSABLE','MARCA DEL EQUIPO', 'MODELO', 'NO. SERIE', 'USUARIO ANTERIOR ', 'FECHA DE TRASPASO', 'FECHA DE COMPRA', 'NO. FACT', 'PROVEEDOR', 'RESPONSIVA', 'ESTADO', 'FIRMA', 'FIRMA', 'OBSERVACIONES', 'TAMAÑO'];
+                break;
+            case 10:
+                return ['UBICACIÓN', 'AREA', 'USUARIO', 'NIVEL', 'NIVEL NUM', 'RESPONSABLE','MARCA DEL EQUIPO', 'MODELO', 'NO. SERIE', 'USUARIO ANTERIOR ', 'FECHA DE TRASPASO', 'FECHA DE COMPRA', 'NO. FACT', 'PROVEEDOR', 'RESPONSIVA', 'ESTADO', 'FIRMA', 'FIRMA', 'OBSERVACIONES'];
+                break;
             default:
                 return [];
                 break;
@@ -114,24 +122,32 @@ class ExcelModel extends Model
                 return $this->rowCPU();
                 break;
             case 2:
-                return [];
+                return $this->rowMonitor();
                 break;
             case 3:
-                return [];
+                return $this->rowCelular();
                 break;
             case 4:
-                return [];
+                return $this->rowChecador();
                 break;
             case 5:
-                return [];
+                return $this->rowDisco();
                 break;
             case 6:
-                return [];
+                return $this->rowImpresora();
                 break;
             case 7:
-                return [];
+                return $this->rowNoBrake();
                 break;
-
+            case 8:
+                return $this->rowProyector();
+                break;
+            case 9:
+                return $this->rowSmart();
+                break;
+            case 10:
+                return $this->rowTablet();
+                break;
             default:
                 return [];
                 break;
@@ -142,6 +158,60 @@ class ExcelModel extends Model
     {
         extract($this->data);
         return [$ubicacion, $area, $usuario, $nivel, $nivelNum, $responsable, $tipo, $macAddress, $marca, $modelo, $numParte, $procesador, $benchmark, $ligaBenchmark, $valuacion, $year, $ram, $expancionRam, "", $tarjetaMadre, $almacenamiento, $numSerie, $sistemaOperativo, $lugar, $certificado, $versionOffice, $tarjetaVideo, $otroSotfware, $personaAnterior, $fechaTraspaso, $fechaCompra, $fechaRenovacion, $precio, $valorDepreciado, $precioMercado, $numFactura, $proveedor, $responsiva, $status, "", $firma, $observaciones];
+    }
+    
+    public function rowMonitor()
+    {
+        extract($this->data);
+        return[$ubicacion, $area, $usuario, $nivel, $nivelNum, $responsable, $marca, $modelo,$numSerie,$personaAnterior, $fechaTraspaso, $fechaCompra,$numFactura, $proveedor, $responsiva, $status, "", $firma, $observaciones, $pulgadas];
+    }
+
+    public function rowCelular()
+    {
+        extract($this->data);
+        return[$ubicacion, $area, $usuario, $nivel, $nivelNum, $responsable, $marca, $modelo,$numSerie,$personaAnterior, $fechaTraspaso, $fechaCompra,$numFactura, $proveedor, $responsiva, $status, "", $firma, $observaciones, $numCelular, $fechaInicio, $fechaFin];
+    }
+
+    public function rowChecador()
+    {
+        extract($this->data);
+        return[$ubicacion, $area, $usuario, $nivel, $nivelNum, $responsable, $marca, $modelo,$numSerie,$personaAnterior, $fechaTraspaso, $fechaCompra,$numFactura, $proveedor, $responsiva, $status, "", $firma, $observaciones, $tipoChecada, $ip];
+    }
+
+    public function rowDisco()
+    {
+        extract($this->data);
+        return[$ubicacion, $area, $usuario, $nivel, $nivelNum, $responsable, $marca, $modelo,$numSerie,$personaAnterior, $fechaTraspaso, $fechaCompra,$numFactura, $proveedor, $responsiva, $status, "", $firma, $observaciones, $capacidad];
+    }
+
+    public function rowImpresora()
+    {
+        extract($this->data);
+        return[$ubicacion, $area, $usuario, $nivel, $nivelNum, $responsable, $marca, $modelo,$numSerie,$personaAnterior, $fechaTraspaso, $fechaCompra,$numFactura, $proveedor, $responsiva, $status, "", $firma, $observaciones, $impresionesXMes];
+    }
+
+    public function rowNoBrake()
+    {
+        extract($this->data);
+        return[$ubicacion, $area, $usuario, $nivel, $nivelNum, $responsable, $marca, $modelo,$numSerie,$personaAnterior, $fechaTraspaso, $fechaCompra,$numFactura, $proveedor, $responsiva, $status, "", $firma, $observaciones,];
+    }
+
+    public function rowProyector()
+    {
+        extract($this->data);
+        return[$ubicacion, $area, $usuario, $nivel, $nivelNum, $responsable, $marca, $modelo,$numSerie,$personaAnterior, $fechaTraspaso, $fechaCompra,$numFactura, $proveedor, $responsiva, $status, "", $firma, $observaciones,];
+    }
+
+    public function rowSmart()
+    {
+        extract($this->data);
+        return[$ubicacion, $area, $usuario, $nivel, $nivelNum, $responsable, $marca, $modelo,$numSerie,$personaAnterior, $fechaTraspaso, $fechaCompra,$numFactura, $proveedor, $responsiva, $status, "", $firma, $observaciones, $size];
+    }
+
+    public function rowTablet()
+    {
+        extract($this->data);
+        return[$ubicacion, $area, $usuario, $nivel, $nivelNum, $responsable, $marca, $modelo,$numSerie,$personaAnterior, $fechaTraspaso, $fechaCompra,$numFactura, $proveedor, $responsiva, $status, "", $firma, $observaciones,];
     }
 
     public function setStyleHead($sheet)
