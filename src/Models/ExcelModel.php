@@ -31,14 +31,16 @@ class ExcelModel extends Model
             $queryTipo = $this->query("SELECT * FROM tipo_equipo");
             $contadorHoja = 1;
             while ($r = $queryTipo->fetch(PDO::FETCH_ASSOC)) {
+                $spreadsheet->setActiveSheetIndex($spreadsheet->getSheetCount() - 1);
                 $sheet = $spreadsheet->getActiveSheet();
                 $sheet->setTitle(strtoupper($r['tipo']));
 
                 $tabla = $r['tabla'];
+
                 $this->idTipo = $r['idTipo'];
-                $query = $this->query("SELECT e.*,cpu.*, u.ubicacion,a.area,  MAX(t.fecha) AS fechaTraspaso, CONCAT(p.nombre,' ',p.apellidos) AS usuario, n.nivel, p.nivelNum, CONCAT(p2.nombre,' ',p2.apellidos) AS responsable, CONCAT(p3.nombre, ' ', p3.apellidos) AS personaAnterior, CONCAT(pro.nombre, ' ', pro.apellidos) AS proveedor
+                $query = $this->query("SELECT e.*, $tabla.*, u.ubicacion,a.area,  MAX(t.fecha) AS fechaTraspaso, CONCAT(p.nombre,' ',p.apellidos) AS usuario, n.nivel, p.nivelNum, CONCAT(p2.nombre,' ',p2.apellidos) AS responsable, CONCAT(p3.nombre, ' ', p3.apellidos) AS personaAnterior, CONCAT(pro.nombre, ' ', pro.apellidos) AS proveedor
                 FROM equipo e 
-                INNER JOIN cpu ON e.idEquipo = cpu.idEquipo 
+                INNER JOIN $tabla ON e.idEquipo = $tabla.idEquipo 
                 INNER JOIN persona p ON p.idPersona = e.idPersona 
                 INNER JOIN ubicacion_persona u ON u.idUbicacion = p.idUbicacion
                 INNER JOIN area_persona a ON a.idArea = p.idArea
@@ -59,7 +61,7 @@ class ExcelModel extends Model
 
                 if ($queryTipo->rowCount() > $contadorHoja) {
                     $spreadsheet->createSheet();
-                    $spreadsheet->setActiveSheetIndex($spreadsheet->getSheetCount() - 1);
+
                     $contadorHoja++;
                 }
                 $this->setStyleSheet($sheet);
