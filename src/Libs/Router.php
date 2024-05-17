@@ -54,7 +54,7 @@ $router->get('/equipo/detalles', function () {
     $equipo->getDetalles();
 });
 
-$router->put('/equipo/edit', function () {
+$router->post('/equipo/edit', function () {
     $equipo = new Equipo();
     $equipo->edit();
 });

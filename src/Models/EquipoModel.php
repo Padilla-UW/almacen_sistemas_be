@@ -421,15 +421,42 @@ class EquipoModel extends Model
             $con = $pdo->connect();
             $con->beginTransaction();
 
+
+
+            $queryValidacion = $con->prepare("SELECT * FROM equipo WHERE numSerie = ? AND idEquipo != ?");
+            $queryValidacion->bindValue(1, $this->numSerie, PDO::PARAM_STR);
+            $queryValidacion->bindValue(2, $this->id, PDO::PARAM_INT);
+            $queryValidacion->execute();
+
+            if ($queryValidacion->rowCount() > 0) {
+                return array("ok" => false, "msj" => "Numero de serie ya registrado");
+            }
+
             $queryTipo = $con->prepare("SELECT * FROM equipo WHERE idEquipo = :id_equipo");
             $queryTipo->bindValue(':id_equipo', $this->id, PDO::PARAM_INT);
             $queryTipo->execute();
             $equipo = $queryTipo->fetch((PDO::FETCH_ASSOC));
 
-            $query = $con->prepare("UPDATE equipo SET idTipo = :id_tipo, idPersona=:id_persona, idProveedor = :id_proveedor, marca=:marca, modelo=:modelo, numSerie = :num_serie, status=:status, fechaCompra =:fecha_compra,numFactura = :num_factura,observaciones=:observaciones WHERE idEquipo = :id_equipo");
+
+            if ($_FILES['firma']['name'] != null) {
+                $nombre = $_FILES['firma']['name'];
+                $nombre_tmp = $_FILES['firma']['tmp_name'];
+                $partes_nombre = explode('.', $nombre);
+                $extension = end($partes_nombre);
+                $ruta = "firmas/";
+
+                $rutaFinal = $ruta . $this->id . "." . $extension;
+                if (move_uploaded_file($nombre_tmp, $rutaFinal)) {
+                    $this->firma = $rutaFinal;
+                }
+            } else {
+                $this->firma = $equipo['firma'];
+            }
+
+
+            $query = $con->prepare("UPDATE equipo SET idTipo = :id_tipo, idProveedor = :id_proveedor, marca=:marca, modelo=:modelo, numSerie = :num_serie, status=:status, fechaCompra =:fecha_compra,numFactura = :num_factura,observaciones=:observaciones, firma=:firma WHERE idEquipo = :id_equipo");
             $query->bindValue(':id_equipo', $this->id, PDO::PARAM_INT);
             $query->bindValue(':id_tipo', $this->idTipo, PDO::PARAM_INT);
-            $query->bindValue(':id_persona', $this->idPersona, PDO::PARAM_INT);
             $query->bindValue(':id_proveedor', $this->idProveedor, PDO::PARAM_INT);
             $query->bindValue(':marca', $this->marca, PDO::PARAM_STR);
             $query->bindValue(':modelo', $this->modelo, PDO::PARAM_STR);
@@ -438,6 +465,7 @@ class EquipoModel extends Model
             $query->bindValue(':fecha_compra', $this->fechaCompra, PDO::PARAM_STR);
             $query->bindValue(':num_factura', $this->numFactura, PDO::PARAM_STR);
             $query->bindValue(':observaciones', $this->observaciones, PDO::PARAM_STR);
+            $query->bindValue(':firma', $this->firma, PDO::PARAM_STR);
             if ($query->execute()) {
 
 

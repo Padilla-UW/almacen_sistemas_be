@@ -59,11 +59,11 @@ class Equipo extends Controller
 
     public function edit()
     {
+        $this->data = $_POST;
         $this->exists(['idEquipo', 'idTipo', 'numSerie']);
         $equipo = new EquipoModel();
         $equipo->setId(($this->data['idEquipo']) ? $this->data['idEquipo'] : null);
         $equipo->setIdTipo(($this->data['idTipo']) ? $this->data['idTipo'] : null);
-        $equipo->setIdPersona(($this->data['idPersona']) ? $this->data['idPersona'] : null);
         $equipo->setIdProveedor(($this->data['idProveedor']) ? $this->data['idProveedor'] : null);
         $equipo->setMarca(($this->data['marca']) ? $this->data['marca'] : '');
         $equipo->setModelo(($this->data['modelo']) ? $this->data['modelo'] : '');
