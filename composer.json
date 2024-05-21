@@ -4,7 +4,8 @@
     "require": {
         "bramus/router": "^1.6",
         "mpdf/mpdf": "^8.2",
-        "phpoffice/phpspreadsheet": "^1.5"
+        "phpoffice/phpspreadsheet": "^1.5",
+        "firebase/php-jwt": "^6.4"
     },
     "autoload": {
         "psr-4": {
