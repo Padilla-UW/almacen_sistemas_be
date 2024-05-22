@@ -2,12 +2,18 @@
 
 use ApiSistemas\Controllers\Equipo;
 use ApiSistemas\Controllers\Inicio;
+use ApiSistemas\Controllers\Login;
 use ApiSistemas\Controllers\Persona;
 use ApiSistemas\Controllers\Proveedor;
 use ApiSistemas\Controllers\Traspaso;
 use Bramus\Router\Router;
 
 $router = new Router();
+
+$router->post('/login', function () {
+    $login = new Login();
+    $login->auth();
+});
 
 $router->get('/equipos', function () {
     $equipos = new Equipo();
