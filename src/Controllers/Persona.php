@@ -2,10 +2,10 @@
 
 namespace ApiSistemas\Controllers;
 
-use ApiSistemas\Libs\Controller;
+use ApiSistemas\Libs\Auth;
 use ApiSistemas\Models\PersonaModel;
 
-class Persona extends Controller
+class Persona extends Auth
 {
     public function __construct()
     {

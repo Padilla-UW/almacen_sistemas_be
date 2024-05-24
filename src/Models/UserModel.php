@@ -29,6 +29,18 @@ class UserModel extends Model
         }
     }
 
+    public function existsToken($token)
+    {
+        try {
+            $query = $this->prepare("SELECT token FROM  usuario WHERE token = :token");
+            $query->execute(['token' => $token]);
+            return ($query->rowCount() > 0) ? true : false;
+        } catch (PDOException $e) {
+            error_log('UserModel::existsToken() ->' . $e->getMessage());
+            return false;
+        }
+    }
+
     public static function login($password, $user)
     {
         try {

@@ -22,3 +22,27 @@
 [22-May-2024 13:18:45 America/Mexico_City] PHP Notice:  Undefined index: id in C:\AppServ\www\almacen_sistemas_be\src\Libs\Auth.php on line 25
 [22-May-2024 13:19:17 America/Mexico_City] PHP Notice:  Undefined index: id in C:\AppServ\www\almacen_sistemas_be\src\Libs\Auth.php on line 25
 [22-May-2024 13:19:36 America/Mexico_City] PHP Notice:  Undefined index: id in C:\AppServ\www\almacen_sistemas_be\src\Libs\Auth.php on line 25
+[23-May-2024 17:16:53 America/Mexico_City] PHP Warning:  array_keys() expects parameter 1 to be array, null given in C:\AppServ\www\almacen_sistemas_be\src\Libs\Controller.php on line 39
+[23-May-2024 17:16:53 America/Mexico_City] PHP Warning:  array_diff(): Expected parameter 2 to be an array, null given in C:\AppServ\www\almacen_sistemas_be\src\Libs\Controller.php on line 39
+[23-May-2024 17:16:53 America/Mexico_City] PHP Warning:  implode(): Invalid arguments passed in C:\AppServ\www\almacen_sistemas_be\src\Libs\Controller.php on line 40
+[23-May-2024 17:28:52 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
+[23-May-2024 17:29:02 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
+[23-May-2024 17:29:38 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
+[23-May-2024 17:30:13 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
+[23-May-2024 17:31:25 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
+[23-May-2024 17:32:02 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
+[23-May-2024 17:32:52 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
+[23-May-2024 17:33:34 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
+[23-May-2024 17:34:26 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
+[23-May-2024 17:36:03 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
+[23-May-2024 17:36:16 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
+[23-May-2024 18:27:12 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
+[24-May-2024 11:50:26 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
+[24-May-2024 11:50:59 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
+[24-May-2024 12:04:46 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
+[24-May-2024 12:05:49 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
+[24-May-2024 12:06:13 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
+[24-May-2024 12:06:35 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
+[24-May-2024 12:06:43 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
+[24-May-2024 12:08:55 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292
+[24-May-2024 12:11:43 America/Mexico_City] PHP Notice:  Undefined index: OPTIONS in C:\AppServ\www\almacen_sistemas_be\vendor\bramus\router\src\Bramus\Router\Router.php on line 292

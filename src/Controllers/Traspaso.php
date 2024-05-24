@@ -2,10 +2,10 @@
 
 namespace ApiSistemas\Controllers;
 
-use ApiSistemas\Libs\Controller;
+use ApiSistemas\Libs\Auth;
 use ApiSistemas\Models\TraspasoModel;
 
-class Traspaso extends Controller
+class Traspaso extends Auth
 {
 
     public function __construct()

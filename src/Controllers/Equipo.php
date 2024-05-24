@@ -2,11 +2,11 @@
 
 namespace ApiSistemas\Controllers;
 
-use ApiSistemas\Libs\Controller;
+use ApiSistemas\Libs\Auth;
 use ApiSistemas\Models\EquipoModel;
 use ApiSistemas\Models\ExcelModel;
 
-class Equipo extends Controller
+class Equipo extends Auth
 {
     public function __construct()
     {

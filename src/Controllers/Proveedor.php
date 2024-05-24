@@ -2,10 +2,10 @@
 
 namespace ApiSistemas\Controllers;
 
-use ApiSistemas\Libs\Controller;
+use ApiSistemas\Libs\Auth;
 use ApiSistemas\Models\ProveedorModel;
 
-class Proveedor extends Controller
+class Proveedor extends Auth
 {
     public function __construct()
     {
