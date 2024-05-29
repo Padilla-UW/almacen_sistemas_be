@@ -234,9 +234,10 @@ class EquipoModel extends Model
             }
 
             $tabla = $result[0]["tabla"];
-            $sqlDetalle = "SELECT * FROM equipo e 
+            $sqlDetalle = "SELECT *, CONCAT(pro.nombre,' ', pro.apellidos) AS proveedor FROM equipo e 
                 INNER JOIN $tabla ON e.idEquipo = $tabla.idEquipo 
                 INNER JOIN tipo_equipo t ON e.idTipo = t.idTipo
+                LEFT JOIN proveedor pro ON e.idProveedor = pro.idProveedor
                 WHERE e.idEquipo = :id_equipo";
             $query = $pdo->prepare($sqlDetalle);
             $query->execute([":id_equipo" => $idEquipo]);
