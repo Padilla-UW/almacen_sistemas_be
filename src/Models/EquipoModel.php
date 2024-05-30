@@ -635,6 +635,26 @@ class EquipoModel extends Model
                 $impresora->idEquipo = $data['idEquipo'];
                 return $impresora->delete($c);
                 break;
+            case 7:
+                $noBrake = new NoBrakeModel();
+                $noBrake->idEquipo = $data['idEquipo'];
+                return $noBrake->delete($c);
+                break;
+            case 8:
+                $proyector = new ProyectorModel();
+                $proyector->idEquipo = $data['idEquipo'];
+                return $proyector->delete($c);
+                break;
+            case 9:
+                $smartTv = new SmartTvModel();
+                $smartTv->idEquipo = $data['idEquipo'];
+                return $smartTv->delete($c);
+                break;
+            case 10:
+                $tablet = new TabletModel();
+                $tablet->idEquipo = $data['idEquipo'];
+                return $tablet->delete($c);
+                break;
             default:
 
                 break;

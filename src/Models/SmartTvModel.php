@@ -22,4 +22,16 @@ class SmartTvModel
             return false;
         }
     }
+
+    public function delete($con)
+    {
+        try {
+            $query = $con->prepare("DELETE FROM  smart_tv  WHERE idEquipo = ? ");
+            $query->bindValue(1, $this->idEquipo, PDO::PARAM_INT);
+            return $query->execute();
+        } catch (PDOException $e) {
+            error_log('SmartTv::delete()->' . $e->getMessage());
+            return false;
+        }
+    }
 }

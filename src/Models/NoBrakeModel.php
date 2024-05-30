@@ -21,4 +21,16 @@ class NoBrakeModel
             return false;
         }
     }
+
+    public function delete($con)
+    {
+        try {
+            $query = $con->prepare("DELETE FROM  no_brake  WHERE idEquipo = ? ");
+            $query->bindValue(1, $this->idEquipo, PDO::PARAM_INT);
+            return $query->execute();
+        } catch (PDOException $e) {
+            error_log('NoBrake::delete()->' . $e->getMessage());
+            return false;
+        }
+    }
 }
