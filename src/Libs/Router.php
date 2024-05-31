@@ -2,6 +2,7 @@
 
 use ApiSistemas\Controllers\Equipo;
 use ApiSistemas\Controllers\Inicio;
+use ApiSistemas\Controllers\Inventario;
 use ApiSistemas\Controllers\Login;
 use ApiSistemas\Controllers\Persona;
 use ApiSistemas\Controllers\Proveedor;
@@ -104,8 +105,14 @@ $router->get('/equipo/excel', function () {
     $equipo->getExcel();
 });
 
+$router->post('/inventario/create', function () {
+    $inventario = new Inventario();
+    $inventario->create();
+});
+
 $router->set404(function () {
     echo json_encode(["message" => "404 not found"]);
 });
+
 
 $router->run();
