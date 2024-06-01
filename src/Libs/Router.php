@@ -110,6 +110,16 @@ $router->post('/inventario/create', function () {
     $inventario->create();
 });
 
+$router->get('/inventario/get', function () {
+    $inventario = new Inventario();
+    $inventario->get();
+});
+
+$router->get('/inventario/detalles', function () {
+    $inventario = new Inventario();
+    $inventario->getDetalles();
+});
+
 $router->set404(function () {
     echo json_encode(["message" => "404 not found"]);
 });

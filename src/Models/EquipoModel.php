@@ -31,7 +31,7 @@ class EquipoModel extends Model
         parent::__construct();
     }
 
-    public static function getEquipos(string $numSerie = '', int $idType = 0, int $idArea = 0, int $idPersona = 0, string $status = '')
+    public static function getEquipos(string $numSerie = '', int $idType = 0, int $idArea = 0, int $idPersona = 0, string $status = '', $idUbicacion = '')
     {
         try {
             $pdo = new Model();
@@ -59,6 +59,10 @@ class EquipoModel extends Model
             if ($status != '') {
                 $arrayFilters[] = " e.status = :status ";
                 $arrayParams[':status'] = $status;
+            }
+            if ($idUbicacion != '') {
+                $arrayFilters[] = " p.idUbicacion = :id_ubicacion ";
+                $arrayParams[':id_ubicacion'] = $idUbicacion;
             }
 
             $sqlFiltros = "";

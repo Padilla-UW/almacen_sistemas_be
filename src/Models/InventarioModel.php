@@ -33,7 +33,7 @@ class InventarioModel extends Model
             $query->bindValue(':id_area', $this->idArea, PDO::PARAM_INT);
             $query->bindValue(':id_ubicacion', $this->idUbicacion, PDO::PARAM_INT);
             $query->bindValue(':fecha', $this->fecha, PDO::PARAM_STR);
-            $query->bindValue(':observacion', $this->fecha, PDO::PARAM_STR);
+            $query->bindValue(':observacion', $this->observacion, PDO::PARAM_STR);
             if ($query->execute()) {
                 $this->setId($c->lastInsertId());
 
@@ -65,6 +65,15 @@ class InventarioModel extends Model
                 $arrayParams[':id_area'] = $this->idArea;
             }
 
+            if ($this->idUbicacion != '') {
+                $arrayFilters[] = " i.idUbicacion = :id_ubicacion ";
+                $arrayParams[':id_ubicacion'] = $this->idUbicacion;
+            }
+
+            if ($this->fecha != '') {
+                $arrayFilters[] = " i.fecha = :fecha ";
+                $arrayParams[':fecha'] = $this->fecha;
+            }
 
             $sqlFiltros = "";
             if ($arrayFilters != "") {
@@ -83,12 +92,34 @@ class InventarioModel extends Model
             $sql .= $sqlFiltros;
             $query = $pdo->prepare($sql);
             $query->execute($arrayParams);
+            return array("ok" => true, "inventarios" => $query->fetchAll(PDO::FETCH_ASSOC));
         } catch (PDOException $e) {
             error_log('EquipoModel::getEquipos -> ' . $e->getMessage());
-            return array("error" => $e->getMessage());
+            return array("ok" => false, "msj" => $e->getMessage());
         }
     }
 
+
+    public function getDetallesInv()
+    {
+        try {
+            $query = $this->prepare("SELECT d.idDetalle ,e.marca, t.tipo, e.modelo, e.numSerie, CONCAT(per.nombre,' ', per.apellidos) AS responsable, 
+            a.area,u.ubicacion, d.status FROM detalle_inventario d 
+            INNER JOIN inventario i ON d.idInventario = i.idInventario
+            INNER JOIN equipo e ON d.idEquipo = e.idEquipo
+            INNER JOIN tipo_equipo t ON e.idTipo = t.idTipo
+            LEFT JOIN persona per ON e.idPersona = per.idPersona
+            LEFT JOIN area_persona a ON per.idArea = a.idArea
+            LEFT JOIN ubicacion_persona u ON per.idUbicacion = u.idUbicacion
+            WHERE i.idInventario = :id_inventario");
+            $query->bindValue(':id_inventario', $this->id, PDO::PARAM_INT);
+            $query->execute();
+            return array("ok" => true, "detalles" => $query->fetchAll(PDO::FETCH_ASSOC));
+        } catch (PDOException $e) {
+            error_log('EquipoModel::getEquipos -> ' . $e->getMessage());
+            return array("ok" => false, "msj" => $e->getMessage());
+        }
+    }
     /**
      * Get the value of idArea
      */

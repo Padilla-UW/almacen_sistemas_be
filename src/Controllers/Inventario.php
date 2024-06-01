@@ -23,4 +23,21 @@ class Inventario extends Controller
         $inventario->setFecha(date('y-m-d'));
         $this->response($inventario->save());
     }
+
+    public function get()
+    {
+        $inventario = new InventarioModel();
+        $inventario->setIdArea(isset($_GET['idArea']) ? $_GET['idArea'] : '');
+        $inventario->setIdUbicacion(isset($_GET['idUbicacion']) ? $_GET['idUbicacion'] : '');
+        $inventario->setFecha(isset($_GET['fecha']) ? $_GET['fecha'] : '');
+
+        $this->response($inventario->getInventarios());
+    }
+    public function getDetalles()
+    {
+        $inventario = new InventarioModel();
+        $inventario->setId(isset($_GET['idInventario']) ? $_GET['idInventario'] : '');
+
+        $this->response($inventario->getDetallesInv());
+    }
 }

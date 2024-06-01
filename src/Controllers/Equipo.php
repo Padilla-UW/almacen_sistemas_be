@@ -21,8 +21,9 @@ class Equipo extends Auth
         $idArea = (isset($_GET['idArea']) && $_REQUEST['idArea'] != NULL) ? $_GET['idArea'] : 0;
         $idPersona = (isset($_GET['idPersona']) && $_REQUEST['idPersona'] != NULL) ? $_GET['idPersona'] : 0;
         $status = (isset($_GET['status']) && $_REQUEST['status'] != NULL) ? $_GET['status'] : '';
+        $idUbicacion = (isset($_GET['idUbicacion']) && $_REQUEST['idUbicacion'] != NULL) ? $_GET['idUbicacion'] : '';
 
-        $this->response(["equipos" => EquipoModel::getEquipos($numSerie, $idTipo, $idArea, $idPersona, $status)]);
+        $this->response(["equipos" => EquipoModel::getEquipos($numSerie, $idTipo, $idArea, $idPersona, $status, $idUbicacion)]);
     }
 
     public function create()
