@@ -104,7 +104,7 @@ class InventarioModel extends Model
     {
         try {
             $query = $this->prepare("SELECT d.idDetalle ,e.marca, t.tipo, e.modelo, e.numSerie, CONCAT(per.nombre,' ', per.apellidos) AS responsable, 
-            a.area,u.ubicacion, d.status FROM detalle_inventario d 
+            a.area,u.ubicacion, d.status, d.observacion FROM detalle_inventario d 
             INNER JOIN inventario i ON d.idInventario = i.idInventario
             INNER JOIN equipo e ON d.idEquipo = e.idEquipo
             INNER JOIN tipo_equipo t ON e.idTipo = t.idTipo

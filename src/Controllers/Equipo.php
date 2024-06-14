@@ -3,10 +3,12 @@
 namespace ApiSistemas\Controllers;
 
 use ApiSistemas\Libs\Auth;
+use ApiSistemas\Libs\Controller;
 use ApiSistemas\Models\EquipoModel;
 use ApiSistemas\Models\ExcelModel;
+use Mpdf\Mpdf;
 
-class Equipo extends Auth
+class Equipo extends Controller
 {
     public function __construct()
     {
@@ -86,7 +88,12 @@ class Equipo extends Auth
                 $url = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://developers.google.com/chart/infographics/docs/qr_codes?hl=es-419';
                 file_put_contents($img, file_get_contents($url));
             }
-            $this->response(array("ok" => true, "qr" => $img));
+            if ($this->generarQrPdf($idEquipo)) {
+                $this->response(array("ok" => true, "qr" => "./pdfs/$idEquipo.png"));
+            } else {
+                $this->response(array("ok" => false, "error" => "Error al generar PDF"));
+            }
+
             return $img;
         } catch (\Throwable $th) {
             $this->response(array("ok" => false, "msj" => $th->getMessage()));
@@ -98,5 +105,29 @@ class Equipo extends Auth
     {
         $excel = new ExcelModel();
         $this->response(["url" => $excel->getExcel()]);
+    }
+
+    public function generarQrPdf($idEquipo)
+    {
+        try {
+
+
+            $mpdf = new Mpdf(['format' => [100, 60], 'margin_left' => 2, 'margin_right' => 2, 'margin_top' => 2, 'margin_bottom' => 2, 'margin_header' => 0, 'margin_footer' => 0]);
+            $mpdf->WriteHTML('<table>
+                                <tr>
+                                    <td>
+                                        <img class=""  src="./Qrs/' . $idEquipo . '.png">
+                                    </td>
+                                    <td style="padding-left:10px">
+                                        <H1>UWIPES</H1>
+                                        <H3>' . str_pad($idEquipo, 4, '0', STR_PAD_LEFT) . '</H3>
+                                    </td>
+                                </tr>
+                            </table>');
+            $mpdf->Output('pdfs/' . $idEquipo . '.pdf', 'F');
+            return true;
+        } catch (\Throwable $th) {
+            return false;
+        }
     }
 }
